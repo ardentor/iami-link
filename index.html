@@ -191,6 +191,31 @@ section{margin-top:36px}
 .period{font-size:12px;font-weight:600;opacity:.8}
 .go{display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:700}
 
+/* ───────── 영상 ─────────
+   유튜브 iframe 을 처음부터 넣으면 페이지 로딩이 눈에 띄게 느려지고
+   재생하지 않는 사람에게도 유튜브 추적이 붙는다.
+   그래서 썸네일만 먼저 깔고, 누른 뒤에야 플레이어를 심는다. */
+#videoWrap{display:none}
+.video{
+  position:relative;width:100%;aspect-ratio:16/9;
+  border-radius:var(--r-card);overflow:hidden;background:#000;
+  box-shadow:var(--shadow);cursor:pointer;
+}
+.video img{width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .3s var(--ease), opacity .3s var(--ease)}
+.video:hover img{transform:scale(1.03);opacity:.85}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video .play{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:66px;height:66px;border-radius:50%;
+  background:rgba(255,0,51,.92);color:#fff;
+  display:grid;place-items:center;font-size:34px;
+  box-shadow:0 4px 16px rgba(0,0,0,.4);
+  transition:transform .2s var(--ease);
+}
+.video:hover .play{transform:translate(-50%,-50%) scale(1.08)}
+.vcap{margin:10px 4px 0;font-size:12.5px;color:var(--on-surface-variant);text-align:center}
+
 /* ───────── 문의 ───────── */
 .contact{display:flex;gap:10px}
 .cbtn{
@@ -247,6 +272,13 @@ footer b{font-weight:600;color:var(--on-surface)}
   <section id="saleWrap">
     <div class="sec-h"><h2>지금 열려 있는 판매</h2><p>기간이 끝나면 자동으로 닫힙니다</p></div>
     <div id="saleList"></div>
+  </section>
+
+  <!-- 영상 — data.json 에 video 가 있을 때만 나타난다 -->
+  <section id="videoWrap">
+    <div class="sec-h"><h2 id="vTitle">영상</h2></div>
+    <div class="video" id="video"></div>
+    <p class="vcap" id="vCap"></p>
   </section>
 
   <div id="sections"></div>
@@ -347,6 +379,37 @@ function renderSections(list){
   $('sections').innerHTML = html;
 }
 
+/* 영상 — 썸네일을 먼저 깔고, 누르면 그 자리에서 재생한다.
+   유튜브로 나가지 않는다. nocookie 도메인이라 추적도 덜 붙는다. */
+function renderVideo(v){
+  if(!v || !v.youtubeId || !/^[A-Za-z0-9_-]{6,20}$/.test(v.youtubeId)) return;
+  var id = v.youtubeId;
+  if(v.title) $('vTitle').textContent = v.title;
+  $('vCap').textContent = v.caption || '';
+
+  var box = $('video');
+  box.setAttribute('role','button');
+  box.setAttribute('tabindex','0');
+  box.setAttribute('aria-label', (v.title || '영상') + ' 재생');
+  box.innerHTML =
+    '<img src="https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg" alt="" loading="lazy" ' +
+      'onerror="this.onerror=null;this.src=\'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg\'">' +
+    '<span class="play ms">play_arrow</span>';
+
+  var play = function(){
+    box.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id +
+      '?autoplay=1&rel=0&modestbranding=1" title="' + esc(v.title || '영상') + '" ' +
+      'allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" ' +
+      'referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+    box.style.cursor = 'default';
+    box.removeAttribute('role');
+  };
+  box.addEventListener('click', play);
+  box.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); play(); } });
+
+  $('videoWrap').style.display = 'block';
+}
+
 function renderContact(c, b){
   if(c){
     $('cPhone').href = 'tel:' + String(c.phone || '').replace(/[^0-9+]/g,'');
@@ -431,6 +494,7 @@ $('share').addEventListener('click', function(){
 loadJSON('data.json')
   .then(function(d){
     renderProfile(d.profile);
+    renderVideo(d.video);
     renderSections(d.sections);
     renderContact(d.contact, d.business);
   })

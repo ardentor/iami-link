@@ -11,6 +11,13 @@
     "avatar": "assets/logo-512.png"
   },
 
+  "_video주의": "youtubeId 만 바꾸면 영상이 바뀐다. 페이지에서 바로 재생된다 (유튜브로 안 나간다).",
+  "video": {
+    "youtubeId": "2C5pWfOUtVU",
+    "title": "아엠아이브랜딩 생방송 굿데이촬영",
+    "caption": "방송에서 소개된 아엠아이브랜딩"
+  },
+
   "sections": [
     {
       "title": "채널",
@@ -50,13 +57,6 @@
           "sub": "@iami_dailylook · 코디 기록",
           "url": "https://www.instagram.com/iami_dailylook",
           "accent": "pink"
-        },
-        {
-          "icon": "play_circle",
-          "label": "유튜브",
-          "sub": "아엠아이브랜딩 생방송 굿데이촬영",
-          "url": "https://youtu.be/2C5pWfOUtVU",
-          "accent": "red"
         },
         {
           "icon": "place",
