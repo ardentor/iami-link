@@ -17,6 +17,13 @@
       "desc": "새 글과 소식은 여기에 올라갑니다",
       "items": [
         {
+          "icon": "forum",
+          "label": "네이버 톡톡",
+          "sub": "상담 · 문의는 여기가 가장 빠릅니다",
+          "url": "https://talk.naver.com/w43nu2",
+          "accent": "green"
+        },
+        {
           "icon": "storefront",
           "label": "네이버 스마트스토어",
           "sub": "골격보드 · 컨설팅 자료 상시 판매",
@@ -52,13 +59,6 @@
           "accent": "red"
         },
         {
-          "icon": "chat_bubble",
-          "label": "카카오톡 채널",
-          "sub": "상담 · 문의는 여기가 가장 빠릅니다",
-          "url": "https://pf.kakao.com/_xdxmxhxixj",
-          "accent": "yellow"
-        },
-        {
           "icon": "place",
           "label": "네이버 플레이스",
           "sub": "예약 · 후기 · 오시는 길",
@@ -75,21 +75,21 @@
           "icon": "palette",
           "label": "퍼스널컬러 · 골격진단 컨설팅",
           "sub": "1:1 진단과 스타일링 방향 정리",
-          "url": "https://pf.kakao.com/_xdxmxhxixj",
+          "url": "https://talk.naver.com/w43nu2",
           "accent": "blue"
         },
         {
           "icon": "school",
           "label": "골격진단 원데이클래스",
           "sub": "이미지컨설턴트 대상 · 월간 모집",
-          "url": "https://blog.naver.com/iami_branding",
+          "url": "https://iamibranding.notion.site/iami-bodyclass",
           "accent": "blue"
         },
         {
           "icon": "smart_toy",
           "label": "AI 원데이클래스",
-          "sub": "컨설턴트를 위한 AI 실무 활용",
-          "url": "https://blog.naver.com/iami_branding",
+          "sub": "압도적으로 이기는 무적의 AI 활용법",
+          "url": "https://iamibranding.notion.site/iami-aiclass",
           "accent": "blue"
         }
       ]
