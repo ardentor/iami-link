@@ -20,7 +20,7 @@
           "icon": "forum",
           "label": "네이버 톡톡",
           "sub": "상담 · 문의는 여기가 가장 빠릅니다",
-          "url": "https://talk.naver.com/w43nu2",
+          "url": "https://talk.naver.com/ct/w43nu2",
           "accent": "green"
         },
         {
@@ -54,8 +54,8 @@
         {
           "icon": "play_circle",
           "label": "유튜브",
-          "sub": "직접 촬영한 영상",
-          "url": null,
+          "sub": "아엠아이브랜딩 생방송 굿데이촬영",
+          "url": "https://youtu.be/2C5pWfOUtVU",
           "accent": "red"
         },
         {
@@ -75,7 +75,7 @@
           "icon": "palette",
           "label": "퍼스널컬러 · 골격진단 컨설팅",
           "sub": "1:1 진단과 스타일링 방향 정리",
-          "url": "https://talk.naver.com/w43nu2",
+          "url": "https://talk.naver.com/ct/w43nu2",
           "accent": "blue"
         },
         {
