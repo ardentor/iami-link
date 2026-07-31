@@ -1,6 +1,8 @@
 {
   "_주의": "이 파일이 링크 허브의 원장이다. 링크를 고칠 때는 여기만 고치고 push 하면 된다. url 이 null 인 항목은 화면에 나오지 않는다.",
 
+  "_배치주의": "2026-08-01 대표님 지시로 순서를 바꿨다 — 컨설팅 예약 → 원데이클래스 → 이벤트 → 상담·문의 → SNS → 위치 안내. sections 의 slot 이 'top' 이면 이벤트 카드보다 위에, 없으면 아래(SNS 자리)에 그려진다. 상담·문의와 위치 안내는 contact 가 만든다.",
+
   "profile": {
     "name": "아엠아이브랜딩",
     "handle": "@iami_branding",
@@ -20,75 +22,29 @@
 
   "sections": [
     {
-      "title": "채널",
-      "desc": "새 글과 소식은 여기에 올라갑니다",
-      "items": [
-        {
-          "icon": "forum",
-          "label": "네이버 톡톡",
-          "sub": "상담 · 문의는 여기가 가장 빠릅니다",
-          "url": "https://talk.naver.com/ct/w43nu2",
-          "accent": "green"
-        },
-        {
-          "icon": "storefront",
-          "label": "네이버 스마트스토어",
-          "sub": "골격보드 · 컨설팅 자료 상시 판매",
-          "url": "https://smartstore.naver.com/iami_branding",
-          "accent": "green"
-        },
-        {
-          "icon": "edit_note",
-          "label": "네이버 블로그",
-          "sub": "골격체형 · 퍼스널컬러 정보 글",
-          "url": "https://blog.naver.com/iami_branding",
-          "accent": "green"
-        },
-        {
-          "icon": "photo_camera",
-          "label": "인스타그램",
-          "sub": "@iami_branding · 브랜드 메인",
-          "url": "https://www.instagram.com/iami_branding",
-          "accent": "pink"
-        },
-        {
-          "icon": "checkroom",
-          "label": "데일리룩 인스타그램",
-          "sub": "@iami_dailylook · 코디 기록",
-          "url": "https://www.instagram.com/iami_dailylook",
-          "accent": "pink"
-        },
-        {
-          "icon": "place",
-          "label": "네이버 플레이스",
-          "sub": "예약 · 후기 · 오시는 길",
-          "url": "https://m.place.naver.com/place/1006986491/home?entry=pll",
-          "accent": "green"
-        }
-      ]
-    },
-    {
       "title": "컨설팅 예약",
+      "slot": "top",
       "desc": "날짜만 알려주시면 가능 여부를 확인해 드립니다",
       "items": [
         {
           "icon": "face_3",
           "label": "여성 프로그램 예약",
           "sub": "퍼스널컬러 · 골격진단 · 프리미엄 · 성향분석",
-          "url": "https://ardentor.github.io/iami-class/booking/women/",
+          "url": "https://ardentor.github.io/iami-class/booking/?g=women",
           "accent": "pink"
         },
         {
           "icon": "face_6",
           "label": "남성 프로그램 예약",
-          "sub": "퍼스널컬러 · 프리미엄 골격 · 토탈 프리미엄",
-          "url": "https://ardentor.github.io/iami-class/booking/men/",
+          "sub": "퍼스널컬러+골격 · 프리미엄 골격 · 토탈 프리미엄",
+          "url": "https://ardentor.github.io/iami-class/booking/?g=men",
           "accent": "blue"
         }
       ]
     },
     {
       "title": "원데이클래스",
+      "slot": "top",
       "desc": "이미지컨설턴트 대상 전문가 과정",
       "items": [
         {
@@ -106,13 +62,51 @@
           "accent": "blue"
         }
       ]
+    },
+    {
+      "title": "SNS · 채널",
+      "desc": "새 글과 소식은 여기에 올라갑니다",
+      "items": [
+        {
+          "icon": "photo_camera",
+          "label": "인스타그램",
+          "sub": "@iami_branding · 브랜드 메인",
+          "url": "https://www.instagram.com/iami_branding",
+          "accent": "pink"
+        },
+        {
+          "icon": "checkroom",
+          "label": "데일리룩 인스타그램",
+          "sub": "@iami_dailylook · 코디 기록",
+          "url": "https://www.instagram.com/iami_dailylook",
+          "accent": "pink"
+        },
+        {
+          "icon": "edit_note",
+          "label": "네이버 블로그",
+          "sub": "골격체형 · 퍼스널컬러 정보 글",
+          "url": "https://blog.naver.com/iami_branding",
+          "accent": "green"
+        },
+        {
+          "icon": "storefront",
+          "label": "네이버 스마트스토어",
+          "sub": "골격보드 · 컨설팅 자료 상시 판매",
+          "url": "https://smartstore.naver.com/iami_branding",
+          "accent": "green"
+        }
+      ]
     }
   ],
 
   "contact": {
     "phone": "010-2025-2767",
     "email": "ownmyway_ib@naver.com",
-    "map": "https://m.place.naver.com/place/1006986491/home?entry=pll"
+    "map": "https://m.place.naver.com/place/1006986491/home?entry=pll",
+    "talk": "https://talk.naver.com/ct/w43nu2",
+    "talkSub": "상담 · 문의는 여기가 가장 빠릅니다",
+    "placeSub": "예약 · 후기 · 오시는 길",
+    "address": "대구 중구 명덕로 143 1층"
   },
 
   "business": {

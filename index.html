@@ -268,11 +268,29 @@ footer b{font-weight:600;color:var(--on-surface)}
     <p class="intro" id="intro"></p>
   </header>
 
+  <!-- ══ 순서는 2026-08-01 대표님 지시로 고정됐다 ══
+       컨설팅 예약 → 원데이클래스 → 이벤트 → 상담·문의 → SNS → 위치 안내.
+       판매 카드가 맨 위로 올라오지 않게 secTop 아래에 둔다. 바꿀 때는 여기 순서를 바꾼다. -->
+
+  <div id="secTop"></div>
+
   <!-- 판매 회차 — 열려 있을 때만 나타난다. 기간이 지나면 스스로 사라진다 -->
   <section id="saleWrap">
     <div class="sec-h"><h2>지금 열려 있는 판매</h2><p>기간이 끝나면 자동으로 닫힙니다</p></div>
     <div id="saleList"></div>
   </section>
+
+  <!-- 상담·문의 — 톡톡이 가장 빠른 창구라 맨 앞에 둔다 -->
+  <section id="askWrap">
+    <div class="sec-h"><h2>상담 · 문의</h2><p>가장 빠른 곳은 네이버 톡톡입니다</p></div>
+    <div class="list" id="askList"></div>
+    <div class="contact" style="margin-top:10px">
+      <a class="cbtn" id="cPhone" href="#"><span class="ms">call</span>전화</a>
+      <a class="cbtn" id="cMail" href="#"><span class="ms">mail</span>이메일</a>
+    </div>
+  </section>
+
+  <div id="secRest"></div>
 
   <!-- 영상 — data.json 에 video 가 있을 때만 나타난다 -->
   <section id="videoWrap">
@@ -281,14 +299,11 @@ footer b{font-weight:600;color:var(--on-surface)}
     <p class="vcap" id="vCap"></p>
   </section>
 
-  <div id="sections"></div>
-
-  <section>
-    <div class="sec-h"><h2>문의</h2></div>
-    <div class="contact">
-      <a class="cbtn" id="cPhone" href="#"><span class="ms">call</span>전화</a>
-      <a class="cbtn" id="cMail" href="#"><span class="ms">mail</span>이메일</a>
-      <a class="cbtn" id="cMap" href="#" target="_blank" rel="noopener"><span class="ms">location_on</span>오시는 길</a>
+  <section id="placeWrap">
+    <div class="sec-h"><h2>위치 안내</h2><p id="addr"></p></div>
+    <div class="list" id="placeList"></div>
+    <div class="contact" style="margin-top:10px">
+      <a class="cbtn" id="cMap" href="#" target="_blank" rel="noopener"><span class="ms">location_on</span>오시는 길 열기</a>
     </div>
   </section>
 
@@ -368,15 +383,21 @@ function itemHTML(it){
          '</a>';
 }
 
+/* slot 이 'top' 인 섹션은 판매 카드 위(컨설팅 예약·원데이클래스),
+   나머지는 상담·문의 아래(SNS)에 그린다. 두 자리를 나눠 놓아야 순서가 안 흔들린다. */
+function sectionHTML(sec){
+  var items = (sec.items || []).map(itemHTML).join('');
+  if(!items) return '';                         // 살아 있는 링크가 하나도 없으면 섹션째 뺀다
+  return '<section><div class="sec-h"><h2>' + esc(sec.title) + '</h2>' +
+           (sec.desc ? '<p>' + esc(sec.desc) + '</p>' : '') +
+         '</div><div class="list">' + items + '</div></section>';
+}
 function renderSections(list){
-  var html = (list || []).map(function(sec){
-    var items = (sec.items || []).map(itemHTML).join('');
-    if(!items) return '';                       // 살아 있는 링크가 하나도 없으면 섹션째 뺀다
-    return '<section><div class="sec-h"><h2>' + esc(sec.title) + '</h2>' +
-             (sec.desc ? '<p>' + esc(sec.desc) + '</p>' : '') +
-           '</div><div class="list">' + items + '</div></section>';
-  }).join('');
-  $('sections').innerHTML = html;
+  var all = list || [];
+  var top = [], rest = [];
+  all.forEach(function(sec){ (sec.slot === 'top' ? top : rest).push(sec); });
+  $('secTop').innerHTML  = top.map(sectionHTML).join('');
+  $('secRest').innerHTML = rest.map(sectionHTML).join('');
 }
 
 /* 영상 — 썸네일을 먼저 깔고, 누르면 그 자리에서 재생한다.
@@ -415,6 +436,13 @@ function renderContact(c, b){
     $('cPhone').href = 'tel:' + String(c.phone || '').replace(/[^0-9+]/g,'');
     $('cMail').href  = 'mailto:' + (c.email || '');
     $('cMap').href   = c.map || '#';
+
+    /* 톡톡·플레이스는 고정 자리를 갖는다 — SNS 목록에 섞이면 순서가 다시 흐트러진다 */
+    $('askList').innerHTML = itemHTML({
+      icon:'forum', label:'네이버 톡톡', sub:c.talkSub, url:c.talk, accent:'green' });
+    $('placeList').innerHTML = itemHTML({
+      icon:'place', label:'네이버 플레이스', sub:c.placeSub, url:c.map, accent:'green' });
+    if(c.address) $('addr').textContent = c.address;
   }
   if(b){
     $('foot').innerHTML =
@@ -499,7 +527,7 @@ loadJSON('data.json')
     renderContact(d.contact, d.business);
   })
   .catch(function(e){
-    $('sections').innerHTML =
+    $('secTop').innerHTML =
       '<div class="err">링크 목록을 불러오지 못했습니다. 잠시 후 다시 열어 주세요.<br>' +
       '<span style="opacity:.7">(' + esc(e.message) + ')</span></div>';
   });
