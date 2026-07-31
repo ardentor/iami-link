@@ -1,0 +1,6 @@
+# 이 페이지는 공개 얼굴이다 — 검색에 잡혀야 한다.
+# (비공개 특가 랜딩 iami-sample 은 반대로 전면 차단이다. 두 리포를 헷갈리지 말 것)
+User-agent: *
+Allow: /
+
+Sitemap: https://ardentor.github.io/iami-link/sitemap.xml

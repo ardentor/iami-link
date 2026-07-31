@@ -1,0 +1,16 @@
+{
+  "name": "아엠아이브랜딩",
+  "short_name": "IamI",
+  "description": "아엠아이브랜딩 공식 링크 — 퍼스널컬러 · 골격진단",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fbf8ff",
+  "theme_color": "#1456f0",
+  "lang": "ko",
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/logo-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "assets/logo-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "_주의": "이 파일이 링크 허브의 원장이다. 링크를 고칠 때는 여기만 고치고 push 하면 된다. url 이 null 인 항목은 화면에 나오지 않는다.",
+
+  "profile": {
+    "name": "아엠아이브랜딩",
+    "handle": "@iami_branding",
+    "tagline": "초심보다 진심, 진심보다 중심.",
+    "intro": "퍼스널컬러 · 골격진단 이미지 컨설팅과 이미지컨설턴트 양성 원데이클래스를 운영합니다. 대구에서 시작해, 진단이 아니라 「기준」을 남기는 일을 합니다.",
+    "owner": "허우영",
+    "location": "대구 중구 명덕로 143 1층",
+    "avatar": "assets/logo-512.png"
+  },
+
+  "sections": [
+    {
+      "title": "채널",
+      "desc": "새 글과 소식은 여기에 올라갑니다",
+      "items": [
+        {
+          "icon": "storefront",
+          "label": "네이버 스마트스토어",
+          "sub": "골격보드 · 컨설팅 자료 상시 판매",
+          "url": "https://smartstore.naver.com/iami_branding",
+          "accent": "green"
+        },
+        {
+          "icon": "edit_note",
+          "label": "네이버 블로그",
+          "sub": "골격체형 · 퍼스널컬러 정보 글",
+          "url": "https://blog.naver.com/iami_branding",
+          "accent": "green"
+        },
+        {
+          "icon": "photo_camera",
+          "label": "인스타그램",
+          "sub": "@iami_branding · 브랜드 메인",
+          "url": "https://www.instagram.com/iami_branding",
+          "accent": "pink"
+        },
+        {
+          "icon": "checkroom",
+          "label": "데일리룩 인스타그램",
+          "sub": "@iami_dailylook · 코디 기록",
+          "url": "https://www.instagram.com/iami_dailylook",
+          "accent": "pink"
+        },
+        {
+          "icon": "play_circle",
+          "label": "유튜브",
+          "sub": "직접 촬영한 영상",
+          "url": null,
+          "accent": "red"
+        },
+        {
+          "icon": "chat_bubble",
+          "label": "카카오톡 채널",
+          "sub": "상담 · 문의는 여기가 가장 빠릅니다",
+          "url": "https://pf.kakao.com/_xdxmxhxixj",
+          "accent": "yellow"
+        },
+        {
+          "icon": "place",
+          "label": "네이버 플레이스",
+          "sub": "예약 · 후기 · 오시는 길",
+          "url": "https://m.place.naver.com/place/1006986491/home?entry=pll",
+          "accent": "green"
+        }
+      ]
+    },
+    {
+      "title": "하는 일",
+      "desc": "",
+      "items": [
+        {
+          "icon": "palette",
+          "label": "퍼스널컬러 · 골격진단 컨설팅",
+          "sub": "1:1 진단과 스타일링 방향 정리",
+          "url": "https://pf.kakao.com/_xdxmxhxixj",
+          "accent": "blue"
+        },
+        {
+          "icon": "school",
+          "label": "골격진단 원데이클래스",
+          "sub": "이미지컨설턴트 대상 · 월간 모집",
+          "url": "https://blog.naver.com/iami_branding",
+          "accent": "blue"
+        },
+        {
+          "icon": "smart_toy",
+          "label": "AI 원데이클래스",
+          "sub": "컨설턴트를 위한 AI 실무 활용",
+          "url": "https://blog.naver.com/iami_branding",
+          "accent": "blue"
+        }
+      ]
+    }
+  ],
+
+  "contact": {
+    "phone": "010-2025-2767",
+    "email": "ownmyway_ib@naver.com",
+    "map": "https://m.place.naver.com/place/1006986491/home?entry=pll"
+  },
+
+  "business": {
+    "company": "아엠아이브랜딩",
+    "owner": "허우영",
+    "regno": "549-21-01872",
+    "address": "대구 중구 명덕로 143 1층"
+  }
+}

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>아엠아이브랜딩 — 퍼스널컬러 · 골격진단</title>
+
+<!-- 이 페이지는 공개 얼굴이다. 링크플라이와 달리 검색에 잡혀야 한다.
+     (비공개 특가 랜딩 iami-sample 은 반대로 noindex 다 — 헷갈리지 말 것) -->
+<meta name="description" content="아엠아이브랜딩 공식 링크. 퍼스널컬러·골격진단 컨설팅, 이미지컨설턴트 원데이클래스, 스마트스토어·블로그·인스타그램을 한 곳에서.">
+<meta name="theme-color" content="#1456f0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111318" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://ardentor.github.io/iami-link/">
+
+<meta property="og:type" content="profile">
+<meta property="og:title" content="아엠아이브랜딩 — 퍼스널컬러 · 골격진단">
+<meta property="og:description" content="초심보다 진심, 진심보다 중심.">
+<meta property="og:image" content="https://ardentor.github.io/iami-link/assets/logo-512.png">
+<meta property="og:url" content="https://ardentor.github.io/iami-link/">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<!-- 구글 머티리얼 아이콘 (Rounded) — 「구글 느낌」의 핵심 -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=block">
+
+<style>
+/* ══════════════════════════════════════════════════════════
+   브랜드 폰트 Paperlogy — 굵기별로 패밀리가 따로다.
+   그래서 font-weight 로는 못 바꾸고 @font-face 로 하나씩 묶어 준다.
+   (이걸 안 하면 조용히 시스템 폰트로 폴백된다)
+   ══════════════════════════════════════════════════════════ */
+@font-face{font-family:'Paperlogy';font-weight:400;font-display:swap;
+  src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-4Regular.woff2') format('woff2')}
+@font-face{font-family:'Paperlogy';font-weight:600;font-display:swap;
+  src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2') format('woff2')}
+@font-face{font-family:'Paperlogy';font-weight:700;font-display:swap;
+  src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2') format('woff2')}
+@font-face{font-family:'Paperlogy';font-weight:800;font-display:swap;
+  src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2')}
+
+/* ══════════════════════════════════════════════════════════
+   머티리얼 3 색 토큰 — 브랜드 블루(#1456f0)를 시드로 만든 톤 팔레트.
+   색을 여기서만 정의하고 아래에서는 이름으로만 쓴다.
+   ══════════════════════════════════════════════════════════ */
+:root{
+  --primary:#1456f0;          --on-primary:#ffffff;
+  --primary-container:#dde1ff; --on-primary-container:#001551;
+  --secondary:#ea5ec1;        --on-secondary:#ffffff;
+  --secondary-container:#ffd8ee; --on-secondary-container:#3c0031;
+
+  --surface:#fbf8ff;          --on-surface:#1a1b21;
+  --surface-container-low:#f5f2fa;
+  --surface-container:#efedf4;
+  --surface-container-high:#e9e7ef;
+  --on-surface-variant:#45464f;
+  --outline-variant:#c6c5d0;
+
+  --shadow:0 1px 2px rgba(0,0,0,.30), 0 1px 3px 1px rgba(0,0,0,.15);
+  --shadow-2:0 1px 2px rgba(0,0,0,.30), 0 2px 6px 2px rgba(0,0,0,.15);
+
+  /* 채널별 강조색 — 네이버 초록, 인스타 핑크, 유튜브 빨강, 카톡 노랑 */
+  --a-green:#03c75a; --a-pink:#ea5ec1; --a-red:#ff0033; --a-yellow:#fae100; --a-blue:#1456f0;
+
+  --ease:cubic-bezier(.2,0,0,1);
+  --r-card:28px; --r-item:20px; --r-pill:100px;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --primary:#b6c4ff;        --on-primary:#00287c;
+    --primary-container:#003bae; --on-primary-container:#dde1ff;
+    --secondary:#ffafe2;      --on-secondary:#5c1149;
+    --secondary-container:#7c2c66; --on-secondary-container:#ffd8ee;
+
+    --surface:#111318;        --on-surface:#e3e1e9;
+    --surface-container-low:#1a1b21;
+    --surface-container:#1e1f25;
+    --surface-container-high:#282a2f;
+    --on-surface-variant:#c6c5d0;
+    --outline-variant:#45464f;
+
+    --shadow:0 1px 3px rgba(0,0,0,.6);
+    --shadow-2:0 2px 8px rgba(0,0,0,.7);
+  }
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{
+  background:var(--surface);color:var(--on-surface);
+  font-family:'Paperlogy','Noto Sans KR',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  font-weight:400;line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  padding:0 16px calc(48px + env(safe-area-inset-bottom));
+}
+.wrap{max-width:640px;margin:0 auto}
+
+/* 머티리얼 심볼 — 폰트가 늦게 오면 글자 이름("storefront")이 보이므로 로드 전엔 숨긴다 */
+.ms{font-family:'Material Symbols Rounded';font-weight:400;font-style:normal;
+  line-height:1;letter-spacing:normal;text-transform:none;white-space:nowrap;
+  direction:ltr;-webkit-font-feature-settings:'liga';font-feature-settings:'liga';
+  -webkit-font-smoothing:antialiased;visibility:hidden}
+.fonts-ready .ms{visibility:visible}
+
+/* ───────── 히어로 ───────── */
+header{padding:44px 4px 28px;text-align:center}
+.avatar{
+  width:104px;height:104px;margin:0 auto 18px;border-radius:32px;
+  background:#fff;display:grid;place-items:center;overflow:hidden;
+  box-shadow:var(--shadow-2);
+}
+.avatar img{width:100%;height:100%;object-fit:contain;display:block}
+h1{margin:0;font-size:28px;font-weight:800;letter-spacing:-.5px}
+.handle{
+  display:inline-block;margin-top:8px;padding:5px 14px;border-radius:var(--r-pill);
+  background:var(--primary-container);color:var(--on-primary-container);
+  font-size:13px;font-weight:600;
+}
+.tagline{margin:16px 0 0;font-size:16px;font-weight:600;color:var(--primary)}
+.intro{margin:12px auto 0;max-width:480px;font-size:14.5px;color:var(--on-surface-variant);word-break:keep-all}
+
+/* ───────── 섹션 ───────── */
+section{margin-top:36px}
+.sec-h{padding:0 8px 12px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.sec-h h2{margin:0;font-size:15px;font-weight:700;letter-spacing:-.2px}
+.sec-h p{margin:0;font-size:12.5px;color:var(--on-surface-variant)}
+
+/* 링크 항목 — M3 리스트 카드. 세로로 쌓이고 첫/끝만 크게 둥글다 */
+.list{display:flex;flex-direction:column;gap:3px}
+.item{
+  position:relative;display:flex;align-items:center;gap:16px;
+  padding:16px 18px;border-radius:8px;
+  background:var(--surface-container-low);color:inherit;text-decoration:none;
+  transition:background .18s var(--ease), transform .18s var(--ease);
+}
+.list .item:first-child{border-radius:var(--r-item) var(--r-item) 8px 8px}
+.list .item:last-child{border-radius:8px 8px var(--r-item) var(--r-item)}
+.list .item:only-child{border-radius:var(--r-item)}
+/* M3 스테이트 레이어 — 눌렀을 때 색이 겹쳐 오르는 그 느낌 */
+.item:hover{background:var(--surface-container)}
+.item:active{background:var(--surface-container-high);transform:scale(.985)}
+.ico{
+  flex:0 0 44px;width:44px;height:44px;border-radius:14px;
+  display:grid;place-items:center;font-size:22px;
+  background:var(--surface-container-high);color:var(--on-surface-variant);
+}
+.ico.green {background:rgba(3,199,90,.14);  color:#03a049}
+.ico.pink  {background:rgba(234,94,193,.14);color:#c93ca2}
+.ico.red   {background:rgba(255,0,51,.12);  color:#e00030}
+.ico.yellow{background:rgba(250,225,0,.20); color:#8a7a00}
+.ico.blue  {background:var(--primary-container);color:var(--on-primary-container)}
+@media (prefers-color-scheme:dark){
+  .ico.green{color:#4ade8b} .ico.pink{color:#ffafe2}
+  .ico.red{color:#ff8a9e}   .ico.yellow{color:#e8d34a}
+}
+.txt{flex:1;min-width:0}
+.txt b{display:block;font-size:15px;font-weight:600;letter-spacing:-.2px}
+.txt span{display:block;margin-top:2px;font-size:12.5px;color:var(--on-surface-variant);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chev{flex:0 0 auto;font-size:20px;color:var(--outline-variant)}
+
+/* ───────── 판매 알림 카드 ───────── */
+#saleWrap{display:none}
+.sale{
+  display:block;text-decoration:none;color:var(--on-primary-container);
+  background:var(--primary-container);border-radius:var(--r-card);
+  padding:20px 22px;margin-bottom:10px;
+  box-shadow:var(--shadow);
+  transition:transform .18s var(--ease), box-shadow .18s var(--ease);
+}
+.sale:active{transform:scale(.99);box-shadow:none}
+.sale-top{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.badge{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:5px 12px;border-radius:var(--r-pill);
+  background:var(--primary);color:var(--on-primary);
+  font-size:11.5px;font-weight:700;letter-spacing:.2px;
+}
+.badge.soon{background:var(--secondary);color:var(--on-secondary)}
+/* 마감 임박은 깜빡이지 않고 색으로만 알린다 — 눈이 피곤한 연출은 안 쓴다 */
+.badge .dot{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.9}
+.round{font-size:12px;font-weight:600;opacity:.75}
+.sale h3{margin:0;font-size:18px;font-weight:700;letter-spacing:-.3px;word-break:keep-all}
+.sale p{margin:6px 0 0;font-size:13px;opacity:.85;word-break:keep-all}
+.sale-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px}
+.period{font-size:12px;font-weight:600;opacity:.8}
+.go{display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:700}
+
+/* ───────── 문의 ───────── */
+.contact{display:flex;gap:10px}
+.cbtn{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;
+  padding:18px 10px;border-radius:var(--r-item);
+  background:var(--surface-container-low);color:inherit;text-decoration:none;
+  font-size:12.5px;font-weight:600;
+  transition:background .18s var(--ease), transform .18s var(--ease);
+}
+.cbtn:hover{background:var(--surface-container)}
+.cbtn:active{background:var(--surface-container-high);transform:scale(.97)}
+.cbtn .ms{font-size:24px;color:var(--primary)}
+
+/* ───────── 공유 버튼 ───────── */
+.share{
+  display:flex;align-items:center;justify-content:center;gap:8px;width:100%;
+  margin-top:28px;padding:16px;border:0;border-radius:var(--r-pill);
+  background:var(--primary);color:var(--on-primary);
+  font-family:inherit;font-size:14.5px;font-weight:700;cursor:pointer;
+  box-shadow:var(--shadow);
+  transition:transform .18s var(--ease), box-shadow .18s var(--ease);
+}
+.share:active{transform:scale(.98);box-shadow:none}
+
+/* ───────── 푸터 ───────── */
+footer{
+  margin-top:40px;padding:22px 8px 0;border-top:1px solid var(--outline-variant);
+  font-size:11.5px;line-height:1.8;color:var(--on-surface-variant);text-align:center;
+}
+footer b{font-weight:600;color:var(--on-surface)}
+
+.err{
+  margin-top:24px;padding:18px 20px;border-radius:var(--r-item);
+  background:var(--surface-container);font-size:13.5px;color:var(--on-surface-variant);
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important;animation:none !important}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="avatar"><img id="avatar" alt="" width="104" height="104"></div>
+    <h1 id="name">아엠아이브랜딩</h1>
+    <div><span class="handle" id="handle">@iami_branding</span></div>
+    <p class="tagline" id="tagline">초심보다 진심, 진심보다 중심.</p>
+    <p class="intro" id="intro"></p>
+  </header>
+
+  <!-- 판매 회차 — 열려 있을 때만 나타난다. 기간이 지나면 스스로 사라진다 -->
+  <section id="saleWrap">
+    <div class="sec-h"><h2>지금 열려 있는 판매</h2><p>기간이 끝나면 자동으로 닫힙니다</p></div>
+    <div id="saleList"></div>
+  </section>
+
+  <div id="sections"></div>
+
+  <section>
+    <div class="sec-h"><h2>문의</h2></div>
+    <div class="contact">
+      <a class="cbtn" id="cPhone" href="#"><span class="ms">call</span>전화</a>
+      <a class="cbtn" id="cMail" href="#"><span class="ms">mail</span>이메일</a>
+      <a class="cbtn" id="cMap" href="#" target="_blank" rel="noopener"><span class="ms">location_on</span>오시는 길</a>
+    </div>
+  </section>
+
+  <button class="share" id="share"><span class="ms">ios_share</span>이 페이지 공유하기</button>
+
+  <footer id="foot"></footer>
+
+</div>
+
+<script>
+'use strict';
+
+/* 아이콘 폰트가 준비되면 그때 보여 준다.
+   안 그러면 로딩 중에 "storefront" 같은 영어 단어가 그대로 노출된다. */
+if (document.fonts && document.fonts.load) {
+  document.fonts.load('24px "Material Symbols Rounded"')
+    .then(function(){ document.body.classList.add('fonts-ready'); })
+    .catch(function(){ document.body.classList.add('fonts-ready'); });
+  setTimeout(function(){ document.body.classList.add('fonts-ready'); }, 2500);  // 폰트가 끝내 안 와도 표시는 한다
+} else {
+  document.body.classList.add('fonts-ready');
+}
+
+var $ = function(id){ return document.getElementById(id); };
+
+function esc(s){
+  return String(s == null ? '' : s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+/* 날짜는 전부 한국시간으로 읽는다.
+   보는 사람이 해외에 있어도 판매 기간은 한국 기준이어야 맞다. */
+function kst(s){
+  if (!s) return null;
+  var t = String(s).trim();
+  if (t.length === 10) t += 'T00:00';          // 날짜만 주면 그날 0시
+  var d = new Date(t + ':00+09:00');
+  return isNaN(d.getTime()) ? null : d;
+}
+/* 한국시간 기준 「달력 며칠 차이」. 시:분이 아니라 날짜로 센다 */
+function dayGap(from, to){
+  var f = Math.floor((from.getTime() + 9*3600e3) / 86400e3);
+  var t = Math.floor((to.getTime()   + 9*3600e3) / 86400e3);
+  return t - f;
+}
+function fmt(d){
+  var k = new Date(d.getTime() + 9*3600e3);
+  return (k.getUTCMonth()+1) + '.' + k.getUTCDate();
+}
+
+/* 캐시를 타면 링크를 고쳐도 안 바뀐다. 매번 새로 받는다 */
+function loadJSON(path){
+  return fetch(path + '?v=' + Date.now(), { cache:'no-store' })
+    .then(function(r){ if(!r.ok) throw new Error(path + ' ' + r.status); return r.json(); });
+}
+
+function renderProfile(p){
+  if(!p) return;
+  if(p.avatar) $('avatar').src = p.avatar;
+  $('avatar').alt = (p.name || '') + ' 로고';
+  if(p.name)    { $('name').textContent = p.name; document.title = p.name + ' — 퍼스널컬러 · 골격진단'; }
+  if(p.handle)  $('handle').textContent = p.handle;
+  if(p.tagline) $('tagline').textContent = p.tagline;
+  $('intro').textContent = p.intro || '';
+}
+
+function itemHTML(it){
+  if(!it || !it.url) return '';                 // url 이 비면 아예 안 그린다 (죽은 링크 방지)
+  var accent = /^[a-z]+$/.test(it.accent || '') ? it.accent : '';
+  return '<a class="item" href="' + esc(it.url) + '" target="_blank" rel="noopener">' +
+           '<span class="ico ' + accent + '"><span class="ms">' + esc(it.icon || 'link') + '</span></span>' +
+           '<span class="txt"><b>' + esc(it.label) + '</b>' +
+             (it.sub ? '<span>' + esc(it.sub) + '</span>' : '') +
+           '</span>' +
+           '<span class="chev ms">chevron_right</span>' +
+         '</a>';
+}
+
+function renderSections(list){
+  var html = (list || []).map(function(sec){
+    var items = (sec.items || []).map(itemHTML).join('');
+    if(!items) return '';                       // 살아 있는 링크가 하나도 없으면 섹션째 뺀다
+    return '<section><div class="sec-h"><h2>' + esc(sec.title) + '</h2>' +
+             (sec.desc ? '<p>' + esc(sec.desc) + '</p>' : '') +
+           '</div><div class="list">' + items + '</div></section>';
+  }).join('');
+  $('sections').innerHTML = html;
+}
+
+function renderContact(c, b){
+  if(c){
+    $('cPhone').href = 'tel:' + String(c.phone || '').replace(/[^0-9+]/g,'');
+    $('cMail').href  = 'mailto:' + (c.email || '');
+    $('cMap').href   = c.map || '#';
+  }
+  if(b){
+    $('foot').innerHTML =
+      '<b>' + esc(b.company) + '</b> · 대표 ' + esc(b.owner) + '<br>' +
+      '사업자등록번호 ' + esc(b.regno) + '<br>' +
+      esc(b.address) +
+      (c && c.phone ? '<br>' + esc(c.phone) : '');
+  }
+}
+
+/* 판매 회차 — 지금 열려 있는 것과 곧 열릴 것만 남긴다.
+   끝난 회차는 파일에서 지우지 않아도 화면에서 사라진다. */
+function renderSales(data){
+  var rows = (data && data.sales) || [];
+  var now = new Date();
+  var live = [];
+
+  rows.forEach(function(s){
+    if(s.public === false || !s.url) return;
+    var st = kst(s.start), en = kst(s.end);
+    if(!st || !en || now > en) return;                 // 끝났으면 버린다
+
+    var open = now >= st;
+    var left = open ? dayGap(now, en) : dayGap(now, st);
+    var label;
+    if(open){
+      label = left <= 0 ? '오늘 마감' : '마감 D-' + left;
+    } else {
+      label = left <= 0 ? '오늘 오픈' : 'D-' + left + ' 오픈';
+    }
+    live.push({ s:s, open:open, label:label, st:st, en:en, sortKey:st.getTime() });
+  });
+
+  if(!live.length) return;                              // 없으면 섹션 자체가 안 뜬다
+
+  live.sort(function(a,b){ return (b.open - a.open) || (a.sortKey - b.sortKey); });
+
+  $('saleList').innerHTML = live.map(function(v){
+    return '<a class="sale" href="' + esc(v.s.url) + '" target="_blank" rel="noopener">' +
+             '<div class="sale-top">' +
+               '<span class="badge' + (v.open ? '' : ' soon') + '"><i class="dot"></i>' + esc(v.label) + '</span>' +
+               (v.s.round ? '<span class="round">' + esc(v.s.round) + '</span>' : '') +
+             '</div>' +
+             '<h3>' + esc(v.s.title) + '</h3>' +
+             (v.s.sub ? '<p>' + esc(v.s.sub) + '</p>' : '') +
+             '<div class="sale-foot">' +
+               '<span class="period">' + fmt(v.st) + ' – ' + fmt(v.en) + '</span>' +
+               '<span class="go">보러 가기 <span class="ms" style="font-size:16px">arrow_forward</span></span>' +
+             '</div>' +
+           '</a>';
+  }).join('');
+  $('saleWrap').style.display = 'block';
+}
+
+/* 공유 — 휴대폰은 기본 공유 시트, PC 는 주소 복사로 갈린다 */
+$('share').addEventListener('click', function(){
+  var url = location.href.split('?')[0];
+  var btn = this;
+  if(navigator.share){
+    navigator.share({ title: document.title, url: url }).catch(function(){});
+    return;
+  }
+  var done = function(){
+    var old = btn.innerHTML;
+    btn.innerHTML = '<span class="ms">check</span>주소를 복사했습니다';
+    setTimeout(function(){ btn.innerHTML = old; }, 1800);
+  };
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(url).then(done).catch(function(){ prompt('아래 주소를 복사하세요', url); });
+  } else {
+    prompt('아래 주소를 복사하세요', url);
+  }
+});
+
+/* 링크 목록이 못 오면 빈 화면 대신 사실대로 적는다.
+   판매 목록은 없어도 페이지는 정상이므로 조용히 넘어간다. */
+loadJSON('data.json')
+  .then(function(d){
+    renderProfile(d.profile);
+    renderSections(d.sections);
+    renderContact(d.contact, d.business);
+  })
+  .catch(function(e){
+    $('sections').innerHTML =
+      '<div class="err">링크 목록을 불러오지 못했습니다. 잠시 후 다시 열어 주세요.<br>' +
+      '<span style="opacity:.7">(' + esc(e.message) + ')</span></div>';
+  });
+
+loadJSON('sales.json').then(renderSales).catch(function(){ /* 판매 없음 = 정상 */ });
+</script>
+</body>
+</html>
