@@ -22,22 +22,29 @@
 
   "sections": [
     {
-      "title": "컨설팅 예약",
+      "title": "컨설팅",
       "slot": "top",
-      "desc": "날짜만 알려주시면 가능 여부를 확인해 드립니다",
+      "desc": "먼저 보시고, 날짜만 남겨 주시면 됩니다",
       "items": [
         {
           "icon": "face_3",
-          "label": "여성 프로그램 예약",
-          "sub": "퍼스널컬러 · 골격진단 · 프리미엄 · 성향분석",
-          "url": "https://ardentor.github.io/iami-class/booking/?g=women",
+          "label": "여성 프로그램 보기",
+          "sub": "퍼스널컬러 · 골격진단 · 프리미엄 — 진행 순서까지",
+          "url": "https://ardentor.github.io/iami-class/women/",
           "accent": "pink"
         },
         {
           "icon": "face_6",
-          "label": "남성 프로그램 예약",
+          "label": "남성 프로그램 보기",
           "sub": "퍼스널컬러+골격 · 프리미엄 골격 · 토탈 프리미엄",
-          "url": "https://ardentor.github.io/iami-class/booking/?g=men",
+          "url": "https://ardentor.github.io/iami-class/men/",
+          "accent": "blue"
+        },
+        {
+          "icon": "edit_calendar",
+          "label": "예약 신청하기",
+          "sub": "날짜만 남겨 주시면 가능한지 확인해 문자로 안내드립니다",
+          "url": "https://ardentor.github.io/iami-class/booking/",
           "accent": "blue"
         }
       ]
