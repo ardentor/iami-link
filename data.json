@@ -57,15 +57,15 @@
         {
           "icon": "school",
           "label": "골격진단 원데이클래스",
-          "sub": "1:1 45만원 · N:1 37만원 (최소 3인)",
-          "url": "https://ardentor.github.io/iami-class/body/",
+          "sub": "남자를 남자가 가르칩니다 — 커리큘럼 · 후기 · 신청",
+          "url": "https://ardentor.github.io/iami-class/bodyclass/",
           "accent": "blue"
         },
         {
           "icon": "smart_toy",
           "label": "AI 원데이클래스",
-          "sub": "압도적으로 이기는 무적의 AI 활용법 · 3시간",
-          "url": "https://ardentor.github.io/iami-class/ai/",
+          "sub": "깊게 배우지 않고 가볍게 연결합니다 · 3시간",
+          "url": "https://ardentor.github.io/iami-class/aiclass/",
           "accent": "blue"
         }
       ]
