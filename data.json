@@ -82,6 +82,14 @@
           "sub": "컬러 × 골격 27조합 · 매주 일요일 갱신 · 선생님 상호로 · 선착순 10분 연 390,000원",
           "url": "https://ardentor.github.io/iami-class/partner/",
           "accent": "pink"
+        },
+        {
+          "_주의": "2026-08-07 신설. 신청하면 **제안서가 자동으로 메일로 나간다** — 대표님이 손댈 것이 없다. 접수는 iamibranding.com/api/proposal (Cloudflare Function)이 받아 배포본 Apps Script 의 doc-mail 통로로 보낸다. 신청 명단은 대표님 메일함의 「[제안서 신청] …」 알림이 원장이다.",
+          "icon": "mail",
+          "label": "제안서 받아보기",
+          "sub": "성함 · 회사 · 메일만 남기시면 1분 안에 메일로 갑니다",
+          "url": "https://iamibranding.com/proposal/",
+          "accent": "blue"
         }
       ]
     },
