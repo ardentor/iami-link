@@ -633,6 +633,27 @@ loadJSON('sales.json').then(renderSales).catch(function(){ /* 판매 없음 = �
 (function(){
   var 받는곳 = 'https://iamibranding.com/api/hit';
   var 표식키 = 'iami_vid';
+  var 주인키 = 'iami_owner';
+
+  /* 🔴 **대표님이 들어오시는 것은 세지 않는다** (2026-08-08 대표님 지시 —
+     「기록을 할 때 내가 들어가는 건 카운터 세지마」).
+
+     대표님은 화면을 확인하시려고 하루에도 여러 번 여신다. 그것까지 세면
+     **숫자가 통째로 거짓**이 되고, 「어제 12명」이 실은 대표님 여덟 번일 수 있다.
+
+     주소 끝에 `?me=1` 을 붙여 **한 번만** 열면 이 브라우저는 그 뒤로 안 세어진다.
+     · 켜기  https://ardentor.github.io/iami-link/?me=1
+     · 끄기  https://ardentor.github.io/iami-link/?me=0
+     📌 기기마다 한 번씩 하셔야 한다 (폰·PC 는 서로 다른 브라우저다).
+     📌 브라우저 기록을 지우시면 표시도 지워진다 — 그때 다시 한 번 여시면 된다. */
+  var 주인 = false;
+  try {
+    var q = location.search || '';
+    if (q.indexOf('me=1') >= 0) { localStorage.setItem(주인키, '1'); }
+    else if (q.indexOf('me=0') >= 0) { localStorage.removeItem(주인키); }
+    주인 = localStorage.getItem(주인키) === '1';
+  } catch (e) {}
+
   var 표식, 처음 = false;
   try {
     표식 = localStorage.getItem(표식키);
@@ -644,6 +665,9 @@ loadJSON('sales.json').then(renderSales).catch(function(){ /* 판매 없음 = �
   } catch (e) { 표식 = ''; }          // 저장을 막아 두신 브라우저 — 그래도 셈은 된다
 
   function 보내기(종류, 무엇){
+    /* 🔴 대표님 기기면 **아무것도 보내지 않는다.** 서버에서 거르지 않고 여기서 멈춘다 —
+       보내 놓고 지우면 그 사이 숫자가 한 번은 틀린다. */
+    if (주인) { return; }
     var 몸 = JSON.stringify({
       kind: 종류, what: 무엇 || '',
       ref: document.referrer || '',
