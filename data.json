@@ -1,164 +1,165 @@
 {
-  "_주의": "이 파일이 링크 허브의 원장이다. 링크를 고칠 때는 여기만 고치고 push 하면 된다. url 이 null 인 항목은 화면에 나오지 않는다.",
-
-  "_배치주의": "2026-08-01 대표님 지시로 순서를 바꿨다 — 컨설팅 예약 → 원데이클래스 → 이벤트 → 상담·문의 → SNS → 위치 안내. sections 의 slot 이 'top' 이면 이벤트 카드보다 위에, 없으면 아래(SNS 자리)에 그려진다. 상담·문의와 위치 안내는 contact 가 만든다.",
-
-  "profile": {
-    "name": "아엠아이브랜딩",
-    "handle": "@iami_branding",
-    "tagline": "초심보다 진심, 진심보다 중심.",
-    "intro": "퍼스널컬러 · 골격진단 이미지 컨설팅과 이미지컨설턴트 양성 원데이클래스를 운영합니다. 대구에서 시작해, 진단이 아니라 「기준」을 남기는 일을 합니다.",
-    "owner": "허우영",
-    "location": "대구 중구 명덕로 143 1층",
-    "avatar": "assets/logo-512.png"
-  },
-
-  "_video주의": "youtubeId 만 바꾸면 영상이 바뀐다. 페이지에서 바로 재생된다 (유튜브로 안 나간다).",
-  "video": {
-    "youtubeId": "2C5pWfOUtVU",
-    "title": "아엠아이브랜딩 생방송 굿데이촬영",
-    "caption": "방송에서 소개된 아엠아이브랜딩"
-  },
-
-  "sections": [
-    {
-      "title": "컨설팅",
-      "slot": "top",
-      "desc": "먼저 보시고, 날짜만 남겨 주시면 됩니다",
-      "items": [
-        {
-          "icon": "face_3",
-          "label": "여성 프로그램 보기",
-          "sub": "퍼스널컬러 · 골격진단 · 프리미엄 — 진행 순서까지",
-          "url": "https://ardentor.github.io/iami-class/women/",
-          "accent": "pink"
-        },
-        {
-          "icon": "face_6",
-          "label": "남성 프로그램 보기",
-          "sub": "퍼스널컬러+골격 · 프리미엄 골격 · 토탈 프리미엄",
-          "url": "https://ardentor.github.io/iami-class/men/",
-          "accent": "blue"
-        },
-        {
-          "icon": "edit_calendar",
-          "label": "예약 신청하기",
-          "sub": "날짜만 남겨 주시면 가능한지 확인해 문자로 안내드립니다",
-          "url": "https://ardentor.github.io/iami-class/booking/",
-          "accent": "blue"
-        }
-      ]
-    },
-    {
-      "title": "원데이클래스",
-      "slot": "top",
-      "desc": "이미지컨설턴트 대상 전문가 과정",
-      "items": [
-        {
-          "icon": "school",
-          "label": "골격진단 원데이클래스",
-          "sub": "남자를 남자가 가르칩니다 — 커리큘럼 · 후기 · 신청",
-          "url": "https://ardentor.github.io/iami-class/bodyclass/",
-          "accent": "blue"
-        },
-        {
-          "icon": "smart_toy",
-          "label": "AI 원데이클래스",
-          "sub": "깊게 배우지 않고 가볍게 연결합니다 · 3시간",
-          "url": "https://ardentor.github.io/iami-class/aiclass/",
-          "accent": "blue"
-        }
-      ]
-    },
-    {
-      "_주의": "상시 항목이다. 종료일이 없으므로 sales.json 이 아니라 여기에 둔다 (2026-08-04 대표님 지시 — 「이 링크는 계속해서 평생 올려둘거야」). 선착순은 연 구독 하나뿐이다(월 39,000 은 폐지). 열 자리가 다 차면 sub 를 「월 49,000원 · 연 490,000원」으로 고친다.",
-      "title": "이미지컨설턴트 지원",
-      "slot": "top",
-      "desc": "고객에게 드리는 결과 자료를 대신 관리해 드립니다",
-      "items": [
-        {
-          "_주의": "2026-08-07 카피라이팅 개편 — 아래 골격 줄과 **나란히 놓였을 때 구분이 되도록** 고쳤다. 종전에는 양쪽 라벨에 「골격」이 들어가 같은 상품으로 보였다. 🔴 라벨의 「골격」을 「체형」으로 바꾼 이유: 「골격」을 남성 구독 전용어로 비워 두기 위해서다. 자료가 바뀐 것이 아니다. 🔴 sub 맨 앞에 「여성 고객용」을 세워 아래 줄의 「남성 고객용」과 대칭을 만들었다 — 컨설턴트가 고르는 기준은 결국 **손님 성별**이다.",
-          "icon": "subscriptions",
-          "label": "퍼스널컬러 × 체형 자료 구독",
-          "sub": "여성 고객용 · 컬러 9타입 × 체형 3종 · 매주 일요일 갱신 · 선생님 상호로 · 선착순 10분 연 390,000원 · 신청도 이 안에서",
-          "url": "https://ardentor.github.io/iami-class/partner/",
-          "accent": "pink"
-        },
-        {
-          "_주의": "2026-08-07 대표님 지시 — 「허브링크에 자료구독신청하기 빼고, 카피라이팅 부서를 시켜서 남성골격자료 구독신청 이렇게 만들어」. 옛 「자료 구독 신청하기」(퍼스널컬러 신청 직행)를 이 줄로 갈았다. 🔴 퍼스널컬러 신청 경로가 없어진 것은 아니다 — 위 안내 줄에서 「신청하기」로 들어가신다. 🚫 두 신청을 한 자리에 나란히 두지 않는다. 컬러와 골격은 파는 방식(코드/구독)도 자격(수료 여부)도 달라, 나란히 두면 어느 쪽을 누르는지 헷갈린다.",
-          "icon": "checkroom",
-          "label": "남성 골격 자료 구독 신청",
-          "sub": "남성 고객용 · 스트레이트 · 웨이브 · 내추럴 · 매주 일요일 갱신 · 선생님 상호로 · 10장 80,000원부터 · 수업 들으신 분은 월 구독 59,000원",
-          "url": "https://iamibranding.com/frame/apply/",
-          "accent": "blue"
-        }
-      ]
-    },
-    {
-      "_주의": "2026-08-07 대표님 지시로 「이미지컨설턴트 지원」에서 빼내 독립 칸으로 세웠다 — 「상담문의 아래에 따로」. slot 을 주지 않아야 secRest(상담·문의 바로 아래)에 그려진다. 🚫 slot:'top' 을 붙이면 맨 위로 올라가 지시와 어긋난다. SNS 보다 앞에 두어야 이 자리에 온다 — 배열 순서가 곧 화면 순서다.",
-      "title": "제휴 · 제안",
-      "desc": "같이 해보실 일이 있다면, 제안서부터 보내 드립니다",
-      "items": [
-        {
-          "_주의": "신청하면 제안서 PDF 가 메일에 첨부돼 자동으로 나간다. 접수는 iamibranding.com/api/proposal (Cloudflare Function)이 받아 Apps Script v30 의 doc-mail 통로로 보낸다. 신청 명단은 대표님 메일함의 「[제안서 신청] …」 알림이 원장이다.",
-          "icon": "mail",
-          "label": "제안서 받아보기",
-          "sub": "기관 · 브랜드 · 샵 — 적어 주시면 바로 메일로 갑니다",
-          "url": "https://iamibranding.com/proposal/",
-          "accent": "blue"
-        }
-      ]
-    },
-    {
-      "title": "SNS · 채널",
-      "desc": "새 글과 소식은 여기에 올라갑니다",
-      "items": [
-        {
-          "icon": "photo_camera",
-          "label": "인스타그램",
-          "sub": "@iami_branding · 브랜드 메인",
-          "url": "https://www.instagram.com/iami_branding",
-          "accent": "pink"
-        },
-        {
-          "icon": "checkroom",
-          "label": "데일리룩 인스타그램",
-          "sub": "@iami_dailylook · 코디 기록",
-          "url": "https://www.instagram.com/iami_dailylook",
-          "accent": "pink"
-        },
-        {
-          "icon": "edit_note",
-          "label": "네이버 블로그",
-          "sub": "골격체형 · 퍼스널컬러 정보 글",
-          "url": "https://blog.naver.com/iami_branding",
-          "accent": "green"
-        },
-        {
-          "icon": "storefront",
-          "label": "네이버 스마트스토어",
-          "sub": "골격보드 · 컨설팅 자료 상시 판매",
-          "url": "https://smartstore.naver.com/iami_branding",
-          "accent": "green"
-        }
-      ]
-    }
-  ],
-
-  "contact": {
-    "phone": "010-2025-2767",
-    "email": "ownmyway_ib@naver.com",
-    "map": "https://m.place.naver.com/place/1006986491/home?entry=pll",
-    "talk": "https://talk.naver.com/ct/w43nu2",
-    "talkSub": "상담 · 문의는 여기가 가장 빠릅니다",
-    "placeSub": "예약 · 후기 · 오시는 길",
-    "address": "대구 중구 명덕로 143 1층"
-  },
-
-  "business": {
-    "company": "아엠아이브랜딩",
-    "owner": "허우영",
-    "regno": "549-21-01872",
-    "address": "대구 중구 명덕로 143 1층"
-  }
+    "_주의":  "이 파일이 링크 허브의 원장이다. 링크를 고칠 때는 여기만 고치고 push 하면 된다. url 이 null 인 항목은 화면에 나오지 않는다.",
+    "_배치주의":  "2026-08-01 대표님 지시로 순서를 바꿨다 — 컨설팅 예약 → 원데이클래스 → 이벤트 → 상담·문의 → SNS → 위치 안내. sections 의 slot 이 \u0027top\u0027 이면 이벤트 카드보다 위에, 없으면 아래(SNS 자리)에 그려진다. 상담·문의와 위치 안내는 contact 가 만든다.",
+    "profile":  {
+                    "name":  "아엠아이브랜딩",
+                    "handle":  "@iami_branding",
+                    "tagline":  "초심보다 진심, 진심보다 중심.",
+                    "intro":  "퍼스널컬러 · 골격진단 이미지 컨설팅과 이미지컨설턴트 양성 원데이클래스를 운영합니다. 대구에서 시작해, 진단이 아니라 「기준」을 남기는 일을 합니다.",
+                    "owner":  "허우영",
+                    "location":  "대구 중구 명덕로 143 1층",
+                    "avatar":  "assets/logo-512.png"
+                },
+    "_video주의":  "youtubeId 만 바꾸면 영상이 바뀐다. 페이지에서 바로 재생된다 (유튜브로 안 나간다).",
+    "video":  {
+                  "youtubeId":  "2C5pWfOUtVU",
+                  "title":  "아엠아이브랜딩 생방송 굿데이촬영",
+                  "caption":  "방송에서 소개된 아엠아이브랜딩"
+              },
+    "sections":  [
+                     {
+                         "title":  "컨설팅",
+                         "slot":  "top",
+                         "desc":  "먼저 보시고, 날짜만 남겨 주시면 됩니다",
+                         "items":  [
+                                       {
+                                           "icon":  "face_3",
+                                           "label":  "여성 프로그램 보기",
+                                           "sub":  "퍼스널컬러 · 골격진단 · 프리미엄 — 진행 순서까지",
+                                           "url":  "https://ardentor.github.io/iami-class/women/",
+                                           "accent":  "pink"
+                                       },
+                                       {
+                                           "icon":  "face_6",
+                                           "label":  "남성 프로그램 보기",
+                                           "sub":  "퍼스널컬러+골격 · 프리미엄 골격 · 토탈 프리미엄",
+                                           "url":  "https://ardentor.github.io/iami-class/men/",
+                                           "accent":  "blue"
+                                       },
+                                       {
+                                           "icon":  "edit_calendar",
+                                           "label":  "예약 신청하기",
+                                           "sub":  "날짜만 남겨 주시면 가능한지 확인해 문자로 안내드립니다",
+                                           "url":  "https://ardentor.github.io/iami-class/booking/",
+                                           "accent":  "blue"
+                                       }
+                                   ]
+                     },
+                     {
+                         "title":  "원데이클래스",
+                         "slot":  "top",
+                         "desc":  "이미지컨설턴트 대상 전문가 과정",
+                         "items":  [
+                                       {
+                                           "icon":  "school",
+                                           "label":  "골격진단 원데이클래스",
+                                           "sub":  "남자를 남자가 가르칩니다 — 커리큘럼 · 후기 · 신청",
+                                           "url":  "https://ardentor.github.io/iami-class/bodyclass/",
+                                           "accent":  "blue"
+                                       },
+                                       {
+                                           "icon":  "smart_toy",
+                                           "label":  "AI 원데이클래스",
+                                           "sub":  "깊게 배우지 않고 가볍게 연결합니다 · 3시간",
+                                           "url":  "https://ardentor.github.io/iami-class/aiclass/",
+                                           "accent":  "blue"
+                                       }
+                                   ]
+                     },
+                     {
+                         "_주의":  "상시 항목이다. 종료일이 없으므로 sales.json 이 아니라 여기에 둔다 (2026-08-04 대표님 지시 — 「이 링크는 계속해서 평생 올려둘거야」). 선착순은 연 구독 하나뿐이다(월 39,000 은 폐지). 열 자리가 다 차면 sub 를 「월 49,000원 · 연 490,000원」으로 고친다.",
+                         "title":  "이미지컨설턴트 지원",
+                         "slot":  "top",
+                         "desc":  "고객에게 드리는 결과 자료를 대신 관리해 드립니다",
+                         "items":  [
+                                       {
+                                           "_주의":  "2026-08-07 카피라이팅 개편 — 아래 골격 줄과 **나란히 놓였을 때 구분이 되도록** 고쳤다. 종전에는 양쪽 라벨에 「골격」이 들어가 같은 상품으로 보였다. 🔴 라벨의 「골격」을 「체형」으로 바꾼 이유: 「골격」을 남성 구독 전용어로 비워 두기 위해서다. 자료가 바뀐 것이 아니다. 🔴 sub 맨 앞에 「여성 고객용」을 세워 아래 줄의 「남성 고객용」과 대칭을 만들었다 — 컨설턴트가 고르는 기준은 결국 **손님 성별**이다.",
+                                           "icon":  "subscriptions",
+                                           "label":  "퍼스널컬러 × 체형 자료 구독",
+                                           "sub":  "여성 고객용 · 컬러 9타입 × 체형 3종 · 매주 일요일 갱신 · 선생님 상호로 · 선착순 10분 연 390,000원 · 신청도 이 안에서",
+                                           "url":  "https://ardentor.github.io/iami-class/partner/",
+                                           "accent":  "pink"
+                                       },
+                                       {
+                                           "_주의":  "2026-08-07 대표님 지시 — 「허브링크에 자료구독신청하기 빼고, 카피라이팅 부서를 시켜서 남성골격자료 구독신청 이렇게 만들어」. 옛 「자료 구독 신청하기」(퍼스널컬러 신청 직행)를 이 줄로 갈았다. 🔴 퍼스널컬러 신청 경로가 없어진 것은 아니다 — 위 안내 줄에서 「신청하기」로 들어가신다. 🚫 두 신청을 한 자리에 나란히 두지 않는다. 컬러와 골격은 파는 방식(코드/구독)도 자격(수료 여부)도 달라, 나란히 두면 어느 쪽을 누르는지 헷갈린다.",
+                                           "icon":  "checkroom",
+                                           "label":  "남성 골격 자료 구독 신청",
+                                           "sub":  "남성 고객용 · 스트레이트 · 웨이브 · 내추럴 · 매주 일요일 갱신 · 선생님 상호로 · 10장 80,000원부터 · 수업 들으신 분은 월 구독 59,000원",
+                                           "url":  "https://iamibranding.com/frame/apply/",
+                                           "accent":  "blue",
+                                           "preview":  {
+                                                           "_주의":  "2026-08-08 대표님 지시 — 「허브링크에서 남성 골격 자료 구독 신청을 누르면 이 영상이 팝업으로 재생되게」. 퍼스널컬러는 실제 사이트를 열어 드리지만 골격은 열 수 없다 (코드 없이 다 보시게 되면 팔 물건이 없어진다). 영상으로 보여 드리고 신청으로 넘긴다. 🔴 영상은 iami-site 에 있다 — 이 저장소에 넣으면 깃 용량이 커진다.",
+                                                           "video":  "https://iamibranding.com/frame/assets/frame-intro.mp4",
+                                                           "poster":  "https://iamibranding.com/frame/assets/frame-intro.jpg",
+                                                           "note":  "선생님 상호와 연락처가 맨 위와 아래에 들어갑니다. 이 화면이 매주 일요일에 갱신됩니다.",
+                                                           "cta":  "구독 신청하러 가기"
+                                                       }
+                                       }
+                                   ]
+                     },
+                     {
+                         "_주의":  "2026-08-07 대표님 지시로 「이미지컨설턴트 지원」에서 빼내 독립 칸으로 세웠다 — 「상담문의 아래에 따로」. slot 을 주지 않아야 secRest(상담·문의 바로 아래)에 그려진다. 🚫 slot:\u0027top\u0027 을 붙이면 맨 위로 올라가 지시와 어긋난다. SNS 보다 앞에 두어야 이 자리에 온다 — 배열 순서가 곧 화면 순서다.",
+                         "title":  "제휴 · 제안",
+                         "desc":  "같이 해보실 일이 있다면, 제안서부터 보내 드립니다",
+                         "items":  [
+                                       {
+                                           "_주의":  "신청하면 제안서 PDF 가 메일에 첨부돼 자동으로 나간다. 접수는 iamibranding.com/api/proposal (Cloudflare Function)이 받아 Apps Script v30 의 doc-mail 통로로 보낸다. 신청 명단은 대표님 메일함의 「[제안서 신청] …」 알림이 원장이다.",
+                                           "icon":  "mail",
+                                           "label":  "제안서 받아보기",
+                                           "sub":  "기관 · 브랜드 · 샵 — 적어 주시면 바로 메일로 갑니다",
+                                           "url":  "https://iamibranding.com/proposal/",
+                                           "accent":  "blue"
+                                       }
+                                   ]
+                     },
+                     {
+                         "title":  "SNS · 채널",
+                         "desc":  "새 글과 소식은 여기에 올라갑니다",
+                         "items":  [
+                                       {
+                                           "icon":  "photo_camera",
+                                           "label":  "인스타그램",
+                                           "sub":  "@iami_branding · 브랜드 메인",
+                                           "url":  "https://www.instagram.com/iami_branding",
+                                           "accent":  "pink"
+                                       },
+                                       {
+                                           "icon":  "checkroom",
+                                           "label":  "데일리룩 인스타그램",
+                                           "sub":  "@iami_dailylook · 코디 기록",
+                                           "url":  "https://www.instagram.com/iami_dailylook",
+                                           "accent":  "pink"
+                                       },
+                                       {
+                                           "icon":  "edit_note",
+                                           "label":  "네이버 블로그",
+                                           "sub":  "골격체형 · 퍼스널컬러 정보 글",
+                                           "url":  "https://blog.naver.com/iami_branding",
+                                           "accent":  "green"
+                                       },
+                                       {
+                                           "icon":  "storefront",
+                                           "label":  "네이버 스마트스토어",
+                                           "sub":  "골격보드 · 컨설팅 자료 상시 판매",
+                                           "url":  "https://smartstore.naver.com/iami_branding",
+                                           "accent":  "green"
+                                       }
+                                   ]
+                     }
+                 ],
+    "contact":  {
+                    "phone":  "010-2025-2767",
+                    "email":  "ownmyway_ib@naver.com",
+                    "map":  "https://m.place.naver.com/place/1006986491/home?entry=pll",
+                    "talk":  "https://talk.naver.com/ct/w43nu2",
+                    "talkSub":  "상담 · 문의는 여기가 가장 빠릅니다",
+                    "placeSub":  "예약 · 후기 · 오시는 길",
+                    "address":  "대구 중구 명덕로 143 1층"
+                },
+    "business":  {
+                     "company":  "아엠아이브랜딩",
+                     "owner":  "허우영",
+                     "regno":  "549-21-01872",
+                     "address":  "대구 중구 명덕로 143 1층"
+                 }
 }

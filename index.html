@@ -191,6 +191,31 @@ section{margin-top:36px}
 .period{font-size:12px;font-weight:600;opacity:.8}
 .go{display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:700}
 
+/* ───────── 실제 자료 영상 팝업 (2026-08-08) ─────────
+   🔴 세로로 찍은 폰 화면이라 **틀도 세로**다. 가로 틀에 넣으면 위아래가 잘린다. */
+#vidWrap{
+  position:fixed;inset:0;z-index:400;display:none;
+  align-items:center;justify-content:center;padding:16px;
+  background:rgba(0,0,0,.88);
+}
+#vidWrap.on{display:flex}
+#vidWrap .vbox{position:relative;width:100%;max-width:420px;display:flex;flex-direction:column}
+#vidWrap video{
+  width:100%;max-height:calc(100vh - 170px);border-radius:14px;background:#000;display:block;
+}
+#vidWrap .vclose{
+  align-self:flex-end;margin-bottom:9px;padding:7px 15px;border-radius:100px;cursor:pointer;
+  border:0;background:rgba(255,255,255,.16);color:#fff;font-family:inherit;font-size:13.5px;font-weight:700;
+}
+#vidWrap .vclose:hover{background:rgba(255,255,255,.3)}
+#vidWrap .vnote{margin:10px 0 0;color:#e9e8ee;font-size:12.5px;text-align:center;line-height:1.6}
+#vidWrap .vgo{
+  margin-top:12px;padding:13px 16px;border-radius:12px;text-align:center;text-decoration:none;
+  background:#1456f0;color:#fff;font-size:15px;font-weight:800;
+}
+#vidWrap .vgo:hover{filter:brightness(1.08)}
+.item.has-vid .chev{color:#1456f0}
+
 /* ───────── 영상 ─────────
    유튜브 iframe 을 처음부터 넣으면 페이지 로딩이 눈에 띄게 느려지고
    재생하지 않는 사람에게도 유튜브 추적이 붙는다.
@@ -371,17 +396,74 @@ function renderProfile(p){
   $('intro').textContent = p.intro || '';
 }
 
+/* 🔴 **누르면 영상이 먼저 뜨는 줄** (2026-08-08 대표님 지시 —
+   「허브링크에서 남성 골격 자료 구독 신청을 누르면 이 영상이 팝업으로 재생되게 만들어」)
+
+   퍼스널컬러는 「실제 자료 보기」로 진짜 사이트를 열어 드린다.
+   골격은 그럴 수 없다 — 자료를 그대로 열면 **코드 없이 다 보시게 되어 팔 물건이 없어진다.**
+   그래서 **영상으로 보여 드리고**, 보신 뒤에 신청으로 넘어가시게 한다.
+
+   `preview.video` 가 있는 줄만 이렇게 동작한다. 없으면 지금까지처럼 그냥 링크다.
+   🚫 `href` 를 지우지 않는다 — 자바스크립트가 막히거나 새 탭으로 여시면 **신청 페이지로 가야 한다.**
+      팝업은 **덤**이지 유일한 길이 아니다. */
 function itemHTML(it){
   if(!it || !it.url) return '';                 // url 이 비면 아예 안 그린다 (죽은 링크 방지)
   var accent = /^[a-z]+$/.test(it.accent || '') ? it.accent : '';
-  return '<a class="item" href="' + esc(it.url) + '" target="_blank" rel="noopener">' +
+  var pv = (it.preview && it.preview.video) ? it.preview : null;
+  return '<a class="item' + (pv ? ' has-vid' : '') + '" href="' + esc(it.url) + '"' +
+           (pv ? ' data-vid="' + esc(pv.video) + '"' +
+                 ' data-poster="' + esc(pv.poster || '') + '"' +
+                 ' data-vnote="' + esc(pv.note || '') + '"' +
+                 ' data-vcta="' + esc(pv.cta || '신청하러 가기') + '"'
+               : ' target="_blank" rel="noopener"') + '>' +
            '<span class="ico ' + accent + '"><span class="ms">' + esc(it.icon || 'link') + '</span></span>' +
            '<span class="txt"><b>' + esc(it.label) + '</b>' +
              (it.sub ? '<span>' + esc(it.sub) + '</span>' : '') +
            '</span>' +
-           '<span class="chev ms">chevron_right</span>' +
+           '<span class="chev ms">' + (pv ? 'play_circle' : 'chevron_right') + '</span>' +
          '</a>';
 }
+
+/* 영상 팝업 — 누르는 순간에 만든다. 미리 받으면 13MB 가 모두에게 나간다. */
+(function(){
+  var wrap = null;
+  function close(){
+    if(!wrap) return;
+    wrap.classList.remove('on');
+    wrap.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+  function open(a){
+    if(!wrap){
+      wrap = document.createElement('div');
+      wrap.id = 'vidWrap';
+      document.body.appendChild(wrap);
+      wrap.addEventListener('click', function(e){ if(e.target === wrap) close(); });
+    }
+    wrap.innerHTML =
+      '<div class="vbox">' +
+        '<button type="button" class="vclose">닫기 ✕</button>' +
+        '<video src="' + esc(a.dataset.vid) + '"' +
+          (a.dataset.poster ? ' poster="' + esc(a.dataset.poster) + '"' : '') +
+          ' controls playsinline muted preload="auto" autoplay></video>' +
+        (a.dataset.vnote ? '<p class="vnote">' + esc(a.dataset.vnote) + '</p>' : '') +
+        '<a class="vgo" href="' + esc(a.getAttribute('href')) + '" target="_blank" rel="noopener">' +
+          esc(a.dataset.vcta) + ' →</a>' +
+      '</div>';
+    wrap.querySelector('.vclose').addEventListener('click', close);
+    wrap.classList.add('on');
+    document.body.style.overflow = 'hidden';
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a.has-vid') : null;
+    if(!a) return;
+    /* 새 탭으로 여시려는 것은 막지 않는다 */
+    if(e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+    e.preventDefault();
+    open(a);
+  });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+})();
 
 /* slot 이 'top' 인 섹션은 판매 카드 위(컨설팅 예약·원데이클래스),
    나머지는 상담·문의 아래(SNS)에 그린다. 두 자리를 나눠 놓아야 순서가 안 흔들린다. */
