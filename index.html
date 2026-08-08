@@ -615,6 +615,69 @@ loadJSON('data.json')
   });
 
 loadJSON('sales.json').then(renderSales).catch(function(){ /* 판매 없음 = 정상 */ });
+
+/* ══════════════════════════════════════════════════════════
+   방문 기록 (2026-08-08 대표님 지시 — 「하루에 몇 명 접속하고 누가 접속하는지」)
+
+   🔴 **「누가」는 웹에서 알 수 없다.** 이름·전화번호는 접속만으로 나오지 않는다.
+      대신 알 수 있는 것을 정확히 남긴다 —
+        · 하루 몇 명 (아래 표식으로 중복 제거)
+        · **어느 줄을 눌렀나** ← 실무에서 가장 값진 값
+        · 어디서 왔나 · 몇 시에 · 폰인지 PC인지 · 처음인지 다시 왔는지
+
+   🚫 개인을 알아내는 값은 보내지 않는다. 표식은 **이 브라우저가 스스로 만든 무작위 문자**이고,
+      IP 는 서버에서도 저장하지 않는다.
+   🚫 기록이 실패해도 화면은 그대로다 — 곁다리가 본 일을 막으면 안 된다.
+   📌 허브는 깃허브 페이지라 서버가 없다. 우리 사이트의 함수로 보낸다.
+   ══════════════════════════════════════════════════════════ */
+(function(){
+  var 받는곳 = 'https://iamibranding.com/api/hit';
+  var 표식키 = 'iami_vid';
+  var 표식, 처음 = false;
+  try {
+    표식 = localStorage.getItem(표식키);
+    if (!표식) {
+      표식 = Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-6);
+      localStorage.setItem(표식키, 표식);
+      처음 = true;
+    }
+  } catch (e) { 표식 = ''; }          // 저장을 막아 두신 브라우저 — 그래도 셈은 된다
+
+  function 보내기(종류, 무엇){
+    var 몸 = JSON.stringify({
+      kind: 종류, what: 무엇 || '',
+      ref: document.referrer || '',
+      vid: 표식, first: 처음
+    });
+    try {
+      /* 🔴 `sendBeacon` 을 먼저 쓴다 — 링크를 눌러 **페이지가 떠나는 중에도** 보내진다.
+         fetch 는 그 순간 취소되어 클릭이 통째로 안 남는다. */
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(받는곳, new Blob([몸], { type: 'application/json' }));
+        return;
+      }
+      fetch(받는곳, { method:'POST', headers:{'content-type':'application/json'},
+                      body: 몸, keepalive: true }).catch(function(){});
+    } catch (e) {}
+  }
+
+  보내기('방문', location.pathname);
+
+  /* 어느 줄을 눌렀는지 — 링크의 **보이는 이름**을 그대로 담는다.
+     주소가 아니라 이름이라야 나중에 읽힌다. */
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a') : null;
+    if (!a) return;
+    var 이름 = '';
+    var b = a.querySelector('.txt b');
+    if (b) { 이름 = b.textContent; }
+    else if (a.classList.contains('sale')) { var h3 = a.querySelector('h3'); 이름 = h3 ? h3.textContent : '판매 카드'; }
+    else if (a.classList.contains('cbtn')) { 이름 = a.textContent; }
+    else if (a.classList.contains('vgo')) { 이름 = '영상 본 뒤 신청'; }
+    else { 이름 = (a.textContent || '').trim().slice(0, 40); }
+    if (이름) { 보내기('클릭', 이름.trim().slice(0, 60)); }
+  }, true);
+})();
 </script>
 </body>
 </html>
