@@ -651,13 +651,20 @@ loadJSON('sales.json').then(renderSales).catch(function(){ /* 판매 없음 = �
     });
     try {
       /* 🔴 `sendBeacon` 을 먼저 쓴다 — 링크를 눌러 **페이지가 떠나는 중에도** 보내진다.
-         fetch 는 그 순간 취소되어 클릭이 통째로 안 남는다. */
+         fetch 는 그 순간 취소되어 클릭이 통째로 안 남는다.
+
+         🔴🔴 **`text/plain` 으로 보낸다** (2026-08-08 — 처음엔 `application/json` 이었다).
+            그러면 브라우저가 「사전 요청(preflight)」을 먼저 보내는데,
+            `sendBeacon` 은 쿠키를 함께 실어 보내므로 서버가 그것까지 허락해야 통과한다.
+            실제로 **CORS 에 막혀 한 건도 안 쌓였다.**
+            `text/plain` 은 사전 요청이 없는 「단순 요청」이라 그 문제가 통째로 사라진다.
+         📌 서버는 content-type 을 보지 않고 본문만 읽으므로 이래도 그대로 동작한다. */
       if (navigator.sendBeacon) {
-        navigator.sendBeacon(받는곳, new Blob([몸], { type: 'application/json' }));
+        navigator.sendBeacon(받는곳, new Blob([몸], { type: 'text/plain;charset=UTF-8' }));
         return;
       }
-      fetch(받는곳, { method:'POST', headers:{'content-type':'application/json'},
-                      body: 몸, keepalive: true }).catch(function(){});
+      /* 🚫 여기서도 content-type 을 붙이지 않는다 — 붙이는 순간 사전 요청이 생긴다. */
+      fetch(받는곳, { method:'POST', body: 몸, keepalive: true }).catch(function(){});
     } catch (e) {}
   }
 
