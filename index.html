@@ -406,6 +406,19 @@ function renderProfile(p){
    `preview.video` 가 있는 줄만 이렇게 동작한다. 없으면 지금까지처럼 그냥 링크다.
    🚫 `href` 를 지우지 않는다 — 자바스크립트가 막히거나 새 탭으로 여시면 **신청 페이지로 가야 한다.**
       팝업은 **덤**이지 유일한 길이 아니다. */
+/* 기간이 지나면 설명이 저절로 바뀐다 (2026-08-12 대표님 지시 「자동으로 바꿔」).
+   `subUntil` 이 있으면 그 시각까지는 `sub`, 지나면 `subAfter` 를 쓴다.
+   왜 필요한가 — 신청 페이지(iami-site\partner\apply)는 8/31 자정에 특가를 **코드로** 뺀다.
+   허브 문구만 손으로 두면 9월 1일에 「390,000원」이라고 광고하고 신청 화면에선 490,000원이 뜬다.
+   🔴 광고한 값보다 비싸게 나오는 것이 가장 나쁜 어긋남이다 (허브 메모의 종전 사고와 같은 이유).
+   ⚠️ 폰 시계가 틀리면 손님 화면도 틀린다 — 값은 어차피 신청 페이지가 최종이라 표시만 어긋난다. */
+function subText(it){
+  if(!it.subUntil || !it.subAfter) return it.sub || '';
+  var end = new Date(it.subUntil);              // 예: "2026-08-31T23:59:59+09:00"
+  if(isNaN(end.getTime())) return it.sub || ''; // 날짜가 이상하면 원래 문구를 그대로 둔다
+  return (new Date() <= end) ? (it.sub || '') : it.subAfter;
+}
+
 function itemHTML(it){
   if(!it || !it.url) return '';                 // url 이 비면 아예 안 그린다 (죽은 링크 방지)
   var accent = /^[a-z]+$/.test(it.accent || '') ? it.accent : '';
@@ -418,7 +431,7 @@ function itemHTML(it){
                : ' target="_blank" rel="noopener"') + '>' +
            '<span class="ico ' + accent + '"><span class="ms">' + esc(it.icon || 'link') + '</span></span>' +
            '<span class="txt"><b>' + esc(it.label) + '</b>' +
-             (it.sub ? '<span>' + esc(it.sub) + '</span>' : '') +
+             (subText(it) ? '<span>' + esc(subText(it)) + '</span>' : '') +
            '</span>' +
            '<span class="chev ms">' + (pv ? 'play_circle' : 'chevron_right') + '</span>' +
          '</a>';
