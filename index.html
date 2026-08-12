@@ -419,6 +419,25 @@ function subText(it){
   return (new Date() <= end) ? (it.sub || '') : it.subAfter;
 }
 
+/* 🔴 경계를 넘겨도 화면이 그대로면 값이 어긋난다 (2026-08-12 아거스 지적).
+   페이지를 밤새 열어 두거나 폰에서 다시 꺼내 보실 때, 자정을 넘긴 순간 문구가 바뀌어야 한다.
+   ① 1분마다 확인 ② 화면으로 돌아올 때 확인 — **문구가 실제로 달라졌을 때만** 다시 그린다.
+   📌 시각 비교는 `subUntil` 에 +09:00 이 붙어 있어 **접속자 시간대와 무관하게 한국시각 기준**이다. */
+function watchSubSwitch(sections){
+  var snap = function(){
+    return (sections || []).map(function(s){
+      return (s.items || []).map(subText).join('|');
+    }).join('||');
+  };
+  var last = snap();
+  function tick(){
+    var now = snap();
+    if(now !== last){ last = now; renderSections(sections); }
+  }
+  setInterval(tick, 60000);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) tick(); });
+}
+
 function itemHTML(it){
   if(!it || !it.url) return '';                 // url 이 비면 아예 안 그린다 (죽은 링크 방지)
   var accent = /^[a-z]+$/.test(it.accent || '') ? it.accent : '';
@@ -619,6 +638,7 @@ loadJSON('data.json')
     renderProfile(d.profile);
     renderVideo(d.video);
     renderSections(d.sections);
+    watchSubSwitch(d.sections);          // 이벤트 마감 시각을 넘기면 화면을 스스로 갈아 준다
     renderContact(d.contact, d.business);
   })
   .catch(function(e){
