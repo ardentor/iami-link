@@ -107,8 +107,8 @@
                                            "accent":  "blue",
                                            "preview":  {
                                                            "_주의":  "2026-08-08 대표님 지시 — 「허브링크에서 남성 골격 자료 구독 신청을 누르면 이 영상이 팝업으로 재생되게」. 퍼스널컬러는 실제 사이트를 열어 드리지만 골격은 열 수 없다 (코드 없이 다 보시게 되면 팔 물건이 없어진다). 영상으로 보여 드리고 신청으로 넘긴다. 🔴 영상은 iami-site 에 있다 — 이 저장소에 넣으면 깃 용량이 커진다.",
-                                                           "video":  "https://iamibranding.com/frame/assets/frame-intro.mp4",
-                                                           "poster":  "https://iamibranding.com/frame/assets/frame-intro.jpg",
+                                                           "video":  "https://iamibranding.com/frame/assets/frame-intro.mp4?v=2",
+                                                           "poster":  "https://iamibranding.com/frame/assets/frame-intro.jpg?v=2",
                                                            "note":  "선생님 상호와 연락처가 맨 위와 아래에 들어갑니다. 이 화면이 매주 일요일에 갱신됩니다.",
                                                            "cta":  "구독 신청하러 가기"
                                                        }
