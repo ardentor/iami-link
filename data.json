@@ -1,5 +1,5 @@
 {
-    "_주의":  "이 파일이 링크 허브의 원장이다. 링크를 고칠 때는 여기만 고치고 push 하면 된다. url 이 null 인 항목은 화면에 나오지 않는다.",
+    "_주의":  "이 파일이 링크 허브의 원장이다. 링크를 고칠 때는 여기만 고치고 push 하면 된다. url 이 null 인 항목은 화면에 나오지 않는다. 🔴 2026-08-18 — 주소를 전부 **iamibranding.com** 으로 맞췄다 (대표님 지시). 종전 ardentor.github.io/iami-class/… 6곳은 모두 「주소가 바뀌었습니다」 안내판일 뿐이어서, 허브에서 누르면 안내판을 한 번 거쳐야 실제 화면에 닿았다. 🚫 github.io 주소로 되돌리지 않는다 — 옮겨 간 자리를 가리키는 이정표를 링크로 걸어 두는 셈이다.",
     "_배치주의":  "2026-08-01 대표님 지시로 순서를 바꿨다 — 컨설팅 예약 → 원데이클래스 → 이벤트 → 상담·문의 → SNS → 위치 안내. sections 의 slot 이 \u0027top\u0027 이면 이벤트 카드보다 위에, 없으면 아래(SNS 자리)에 그려진다. 상담·문의와 위치 안내는 contact 가 만든다.",
     "profile":  {
                     "name":  "아엠아이브랜딩",
@@ -40,21 +40,21 @@
                                            "icon":  "face_3",
                                            "label":  "여성 프로그램 보기",
                                            "sub":  "퍼스널컬러 · 골격진단 · 프리미엄 — 진행 순서까지",
-                                           "url":  "https://ardentor.github.io/iami-class/women/",
+                                           "url":  "https://iamibranding.com/women/",
                                            "accent":  "pink"
                                        },
                                        {
                                            "icon":  "face_6",
                                            "label":  "남성 프로그램 보기",
                                            "sub":  "퍼스널컬러+골격 · 프리미엄 골격 · 토탈 프리미엄",
-                                           "url":  "https://ardentor.github.io/iami-class/men/",
+                                           "url":  "https://iamibranding.com/men/",
                                            "accent":  "blue"
                                        },
                                        {
                                            "icon":  "edit_calendar",
                                            "label":  "예약 신청하기",
                                            "sub":  "날짜만 남겨 주시면 가능한지 확인해 문자로 안내드립니다",
-                                           "url":  "https://ardentor.github.io/iami-class/booking/",
+                                           "url":  "https://iamibranding.com/booking/",
                                            "accent":  "blue"
                                        }
                                    ]
@@ -68,14 +68,14 @@
                                            "icon":  "school",
                                            "label":  "골격진단 원데이클래스",
                                            "sub":  "남자를 남자가 가르칩니다 — 커리큘럼 · 후기 · 신청",
-                                           "url":  "https://ardentor.github.io/iami-class/bodyclass/",
+                                           "url":  "https://iamibranding.com/bodyclass/",
                                            "accent":  "blue"
                                        },
                                        {
                                            "icon":  "smart_toy",
                                            "label":  "AI 원데이클래스",
                                            "sub":  "깊게 배우지 않고 가볍게 연결합니다 · 3시간",
-                                           "url":  "https://ardentor.github.io/iami-class/aiclass/",
+                                           "url":  "https://iamibranding.com/aiclass/",
                                            "accent":  "blue"
                                        }
                                    ]
@@ -95,7 +95,7 @@
                                            "_주의3":  "2026-08-12 대표님 지시 「자동으로 바꿔」 — 9월 1일이 되면 화면이 스스로 subAfter 로 갈아탄다. 신청 페이지(iami-site\\partner\\apply\\index.html 의 EVENT_END)가 같은 시각에 특가를 빼므로 두 곳이 어긋나지 않는다. 🔴 값을 다시 바꾸실 때는 **세 곳을 함께** 고친다 — 여기 sub·subAfter, 신청 페이지 EVENT_END, /partner/ 소개 페이지 가격.",
                                            "subUntil":  "2026-08-31T23:59:59+09:00",
                                            "subAfter":  "여성 고객용 · 외국인 손님도 같은 링크 · 한국어 English 中文 日本語 · 컬러 9타입 × 체형 3종 · 매주 일요일 갱신 · 선생님 상호로 · 연 490,000원 · 신청도 이 안에서",
-                                           "url":  "https://ardentor.github.io/iami-class/partner/",
+                                           "url":  "https://iamibranding.com/partner/",
                                            "accent":  "pink"
                                        },
                                        {
