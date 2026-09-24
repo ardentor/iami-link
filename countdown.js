@@ -62,6 +62,9 @@
     var mine = [];
     (rows || []).forEach(function (s) {
       if (!s || !s.url || norm(s.url) !== PAGE) return;
+      /* 🔴 public:false 는 「대표님이 아직 공개 말라」 하신 회차다 — 허브·팝업처럼 여기서도 안 띄운다.
+            같은 주소를 다음 회차가 이어 쓰므로, 안 거르면 그 회차 이름·시각이 새어 나간다 (아거스 1R) */
+      if (s.public === false) return;
       var st = kst(s.start), en = kst(s.end);
       if (!st || !en || en <= st) return;               // 날짜가 깨진 회차는 세지 않는다
       mine.push({ s: s, st: st, en: en });
