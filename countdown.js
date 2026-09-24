@@ -78,37 +78,34 @@
     return mine.sort(function (a, b) { return b.en - a.en; })[0] || null;
   }
 
+  /* 2026-09-24 대표님 시안(「직잭 블랙 프라이데이」 화면) — 검은 판 · 큰 숫자 4칸 · 쌍점 · 밑에 DAYS/HRS/MINS/SECS.
+     🔴 고정 막대가 아니라 페이지 맨 위 한 덩이다 — 큰 판을 고정하면 폰 화면 절반을 계속 가린다.
+     🔴 시안의 빨간 글자는 따르지 않는다 — 우리 색(블루)은 뒷배경 번짐에만, 핑크는 진행 막대에만 쓴다. */
   var CSS =
-    '#iami-cd{position:fixed;left:0;right:0;top:0;z-index:1000;' +
-      'background:#101318;border-bottom:1px solid #262a33;color:#fff;' +
-      'font-family:inherit;line-height:1.25;-webkit-font-smoothing:antialiased;' +
-      'padding-top:env(safe-area-inset-top)}' +
+    '#iami-cd{position:relative;overflow:hidden;color:#fff;text-align:center;' +
+      'background:radial-gradient(120% 90% at 50% 0%,rgba(20,86,240,.30) 0%,rgba(20,86,240,0) 60%),#0b0c10;' +
+      'font-family:inherit;line-height:1.2;-webkit-font-smoothing:antialiased;' +
+      'padding:calc(26px + env(safe-area-inset-top)) 16px 0}' +
     '#iami-cd *{box-sizing:border-box;margin:0;padding:0}' +
-    '#iami-cd .cd-in{max-width:560px;margin:0 auto;padding:9px 16px;display:flex;' +
-      'align-items:center;justify-content:space-between;gap:12px}' +
-    '#iami-cd .cd-lab{min-width:0;flex:1 1 auto}' +
-    /* 회차 이름이 길면 이름만 「…」로 접고 「· 마감까지」는 남긴다 (실측 — 통째로 접으면 무슨 시계인지 사라진다) */
-    '#iami-cd .cd-lab b{display:flex;font-size:14px;font-weight:800;letter-spacing:-.01em;white-space:nowrap;min-width:0}' +
-    '#iami-cd .cd-lab b .cd-r{overflow:hidden;text-overflow:ellipsis;min-width:0}' +
-    '#iami-cd .cd-lab b .cd-s{flex:0 0 auto}' +
-    '#iami-cd .cd-lab b em{font-style:normal}' +
-    '#iami-cd .cd-lab span{display:block;font-size:11.5px;color:#aeb4c0;font-weight:600;margin-top:3px;' +
+    '#iami-cd .cd-r{font-size:13px;font-weight:700;letter-spacing:.08em;color:#9fb6ff;' +
       'white-space:nowrap;overflow:hidden;text-overflow:ellipsis}' +
-    '#iami-cd .cd-t{display:flex;gap:4px;flex:0 0 auto}' +
-    '#iami-cd .cd-u{min-width:36px;text-align:center;background:#1456f0;border-radius:7px;padding:4px 3px 3px}' +
-    '#iami-cd .cd-u i{display:block;font-style:normal;font-size:19px;font-weight:800;' +
-      'font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1.1}' +
-    '#iami-cd .cd-u em{display:block;font-style:normal;font-size:9.5px;font-weight:700;color:#e3ecff;margin-top:1px}' +
-    '#iami-cd .cd-u.cd-d{background:#fff;color:#0f1012}' +
-    '#iami-cd .cd-u.cd-d em{color:#3a4150}' +
-    '#iami-cd .cd-bar{height:3px;background:#262a33}' +
+    '#iami-cd .cd-cap{font-size:15px;font-weight:600;color:#d7dbe3;margin-top:6px}' +
+    '#iami-cd .cd-t{display:flex;justify-content:center;align-items:flex-start;gap:clamp(4px,2vw,14px);margin-top:14px}' +
+    '#iami-cd .cd-u{min-width:2.2ch;font-size:clamp(38px,12vw,60px)}' +
+    '#iami-cd .cd-u i{display:block;font-style:normal;font-weight:500;letter-spacing:-.02em;' +
+      'font-variant-numeric:tabular-nums;line-height:1}' +
+    '#iami-cd .cd-u em{display:block;font-style:normal;font-size:12px;font-weight:600;letter-spacing:.06em;' +
+      'color:#e6e8ee;margin-top:8px}' +
+    '#iami-cd .cd-c{font-size:clamp(26px,8vw,40px);line-height:clamp(38px,12vw,60px);color:#6b7280;font-weight:700}' +
+    '#iami-cd .cd-sub{font-size:12.5px;color:#aeb4c0;font-weight:600;margin-top:16px;padding-bottom:20px}' +
+    '#iami-cd .cd-bar{height:3px;background:#22252d;margin:0 -16px}' +
     '#iami-cd .cd-bar i{display:block;height:100%;width:0;background:#ea5ec1;transition:width 1s linear}' +
-    '#iami-cd.cd-hot .cd-u{animation:iamicd 1.6s ease-in-out infinite}' +
-    '@keyframes iamicd{0%,100%{box-shadow:0 0 0 0 rgba(234,94,193,0)}50%{box-shadow:0 0 0 3px rgba(234,94,193,.55)}}' +
+    /* 하루 안 남으면 쌍점이 1초마다 숨 쉰다 — 글자 색은 안 바꾼다 */
+    '#iami-cd.cd-hot .cd-c{animation:iamicd 1s steps(1) infinite}' +
+    '@keyframes iamicd{50%{opacity:.25}}' +
     '#iami-cd.cd-over .cd-t{display:none}' +
-    '@media (prefers-reduced-motion:reduce){#iami-cd.cd-hot .cd-u{animation:none}#iami-cd .cd-bar i{transition:none}}' +
-    '@media (min-width:600px){#iami-cd .cd-lab b{font-size:15px}#iami-cd .cd-u{min-width:42px}#iami-cd .cd-u i{font-size:21px}}' +
-    '.iami-cd-sp{display:block}';
+    '#iami-cd.cd-over .cd-cap{font-size:20px;color:#fff}' +
+    '@media (prefers-reduced-motion:reduce){#iami-cd.cd-hot .cd-c{animation:none}#iami-cd .cd-bar i{transition:none}}';
 
   function mount(v, skew) {
     if (document.getElementById('iami-cd')) return;     // 두 번 붙지 않는다
@@ -116,43 +113,38 @@
     st.textContent = CSS;
     document.head.appendChild(st);
 
-    var bar = document.createElement('div');
+    var bar = document.createElement('section');
     bar.id = 'iami-cd';
     bar.setAttribute('role', 'timer');
     bar.innerHTML =
-      '<div class="cd-in">' +
-        '<div class="cd-lab"><b><em class="cd-r"></em><em class="cd-s"></em></b><span></span></div>' +
-        '<div class="cd-t" aria-hidden="true">' +
-          '<span class="cd-u cd-d"><i></i><em>일</em></span>' +
-          '<span class="cd-u"><i></i><em>시간</em></span>' +
-          '<span class="cd-u"><i></i><em>분</em></span>' +
-          '<span class="cd-u"><i></i><em>초</em></span>' +
-        '</div>' +
+      '<p class="cd-r"></p>' +
+      '<p class="cd-cap"></p>' +
+      '<div class="cd-t" aria-hidden="true">' +
+        '<span class="cd-u"><i></i><em>DAYS</em></span><span class="cd-c">:</span>' +
+        '<span class="cd-u"><i></i><em>HRS</em></span><span class="cd-c">:</span>' +
+        '<span class="cd-u"><i></i><em>MINS</em></span><span class="cd-c">:</span>' +
+        '<span class="cd-u"><i></i><em>SECS</em></span>' +
       '</div>' +
+      '<p class="cd-sub"></p>' +
       '<div class="cd-bar"><i></i></div>';
+    document.body.insertBefore(bar, document.body.firstChild);   // 페이지 맨 위
+    /* 페이지 body 의 바깥 여백(기본 8px 등) 때문에 판 위·옆에 틈이 생긴다 — 그만큼 밖으로 당겨 가장자리에 붙인다 */
+    (function () {
+      var cs = getComputedStyle(document.body);
+      var mt = (parseFloat(cs.marginTop) || 0) + (parseFloat(cs.paddingTop) || 0);
+      var ml = (parseFloat(cs.marginLeft) || 0) + (parseFloat(cs.paddingLeft) || 0);
+      var mr = (parseFloat(cs.marginRight) || 0) + (parseFloat(cs.paddingRight) || 0);
+      bar.style.margin = (-mt) + 'px ' + (-mr) + 'px 0 ' + (-ml) + 'px';
+    })();
 
-    /* 고정 막대가 본문 첫 줄을 덮지 않게 같은 높이의 빈 칸을 맨 앞에 둔다 */
-    var sp = document.createElement('div');
-    sp.className = 'iami-cd-sp';
-    sp.setAttribute('aria-hidden', 'true');
-    document.body.insertBefore(sp, document.body.firstChild);
-    document.body.appendChild(bar);
-
-    function fit() { sp.style.height = bar.offsetHeight + 'px'; }
-    fit();
-    if (window.ResizeObserver) new ResizeObserver(fit).observe(bar);
-    else window.addEventListener('resize', fit);
-
-    var title = bar.querySelector('.cd-lab b');
-    var tR    = title.querySelector('.cd-r');
-    var tS    = title.querySelector('.cd-s');
-    var sub   = bar.querySelector('.cd-lab > span');
-    function say(r, s) { tR.textContent = r; tS.textContent = s; }
+    var tR    = bar.querySelector('.cd-r');
+    var cap   = bar.querySelector('.cd-cap');
+    var sub   = bar.querySelector('.cd-sub');
     var box   = bar.querySelectorAll('.cd-u i');
-    var dBox  = bar.querySelector('.cd-u.cd-d');
     var fill  = bar.querySelector('.cd-bar i');
     var round = v.s.round ? String(v.s.round) : '한정 판매';
     var timer = null, lastAria = '';
+    tR.textContent = round;                              // 글은 전부 textContent — HTML 로 안 넣는다
 
     function draw() {
       var now = Date.now() + skew;
@@ -160,11 +152,10 @@
       var target = before ? v.st.getTime() : v.en.getTime();
       var left = target - now;
 
-      /* 🔴 부제에 회차 이름까지 넣으면 360px 에서 날짜가 「…」로 잘린다 (실측) — 회차는 제목 줄로 올린다 */
       if (!before && left <= 0) {                      // 끝났다
         bar.className = 'cd-over';
-        say('판매가 마감되었습니다', '');
-        sub.textContent = round + ' · ' + label(v.en);
+        cap.textContent = '판매가 마감되었습니다';
+        sub.textContent = label(v.en) + ' 마감';
         fill.style.width = '100%';
         bar.setAttribute('aria-label', round + ' 판매가 마감되었습니다');
         if (timer) { clearTimeout(timer); timer = null; }
@@ -177,27 +168,25 @@
       var h = Math.floor(s / 3600);  s -= h * 3600;
       var m = Math.floor(s / 60);    s -= m * 60;
 
-      box[0].textContent = d;
+      box[0].textContent = pad(d);                     // 100일 넘으면 세 자리 그대로
       box[1].textContent = pad(h);
       box[2].textContent = pad(m);
       box[3].textContent = pad(s);
-      dBox.style.display = d > 0 ? '' : 'none';
 
-      var hot = !before && left < DAY;
-      bar.className = hot ? 'cd-hot' : '';
+      bar.className = (!before && left < DAY) ? 'cd-hot' : '';
       if (before) {
-        say(round, '\u00a0· 오픈까지');
+        cap.textContent = '오픈까지 남은 시간';
         sub.textContent = label(v.st) + ' 오픈';
         fill.style.width = '0';
       } else {
-        say(round, kday(now) === kday(v.en.getTime() - 1) ? '\u00a0· 오늘 마감' : '\u00a0· 마감까지');
+        cap.textContent = kday(now) === kday(v.en.getTime() - 1) ? '오늘 마감 · 남은 시간' : '마감까지 남은 시간';
         sub.textContent = label(v.en) + ' 마감';
         var span = v.en - v.st;
         fill.style.width = Math.max(0, Math.min(100, (now - v.st.getTime()) / span * 100)).toFixed(2) + '%';
       }
 
       /* 읽어 주는 기기에는 1초마다가 아니라 분이 바뀔 때만 새로 알린다 */
-      var aria = title.textContent + ' ' + (d > 0 ? d + '일 ' : '') + h + '시간 ' + m + '분';
+      var aria = round + ' ' + cap.textContent + ' ' + (d > 0 ? d + '일 ' : '') + h + '시간 ' + m + '분';
       if (aria !== lastAria) { bar.setAttribute('aria-label', aria + ' · ' + sub.textContent); lastAria = aria; }
       return true;
     }
