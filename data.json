@@ -118,9 +118,11 @@
                                            "accent":  "pink",
                                            "preview":  {
                                                            "_주의":  "2026-09-06 대표님 지시 — 「여자골격구독 화면을 녹화했는데, 남자골격구독처럼 팝업·신청·플레이스에 다 넣어줘 · 속도는 조금 빠르게」. 남성 카드(아래)와 **같은 자리·같은 방식**이다. 🔴 영상은 `frame/assets/frame-intro-w.mp4` 하나를 팝업·신청 페이지·허브가 함께 쓴다 — 한 곳만 갈아 끼우면 세 자리가 함께 바뀐다. 🔴 원본(1080×2340 · 151.8초 · 62MB)에서 폰 상태바(상단 80px)와 제스처 바(하단 30px)를 잘라 남성 판과 같은 얼굴로 맞췄다 — 안 자르면 나란히 걸렸을 때 여성 것만 폰 화면처럼 보인다. 🔴 속도 1.3배(151.8초 → 116.8초) · 640×1322 · 12.3MB — 남성(640×1334 · 107.9초 · 10.7MB)과 짝이 맞는다.",
-                                                           "video":  "https://iamibranding.com/frame/assets/frame-intro-w.mp4?v=1",
-                                                           "poster":  "https://iamibranding.com/frame/assets/frame-intro-w.jpg?v=1",
-                                                           "note":  "선생님 상호와 연락처가 맨 위와 아래에 들어갑니다. 이 화면이 매주 수요일에 갱신됩니다.",
+                                                           "_주의2":  "2026-09-25 대표님 지시 — 「링크허브에 있는 여성골격진단 구독을 넣을때 나오는 팝업창 이걸로 바꿔줘」. 녹화 영상(frame-intro-w)에서 **키네틱 광고판(frame-ad-w)** 으로 갈았다 — 음악 · 실제 화면 녹화 · 4개국어 · 주간보고서 · 53.5초. 🔴 **바꾼 것은 허브 팝업 하나뿐이다** — frame-intro-w.mp4 는 지우지 않았고 소개 페이지 등 다른 자리는 그대로 옛 영상을 쓴다. 🔴 4K 원본(38.5MB)은 Cloudflare Pages 파일 상한(25MB)을 넘어 **4K 그대로 crf 27 로 다시 눌렀다**(12.5MB) · 폰은 1080 판(7.7MB) — 고르는 규칙은 index.html 의 pickVid. 🔴 끝 화면의 「9월 30일까지 오픈 기념 1년 490,000원」은 **10월 1일부터 틀린 말**이 된다 — 그 전에 판을 갈아야 한다.",
+                                                           "video":  "https://iamibranding.com/frame/assets/frame-ad-w.mp4?v=1",
+                                                           "videoSm":  "https://iamibranding.com/frame/assets/frame-ad-w-1080.mp4?v=1",
+                                                           "poster":  "https://iamibranding.com/frame/assets/frame-ad-w.jpg?v=1",
+                                                           "note":  "선생님 상호와 연락처가 맨 위와 아래에 들어갑니다. 매주 수요일에 갱신되고, 4개국어로 열립니다.",
                                                            "cta":  "자세히 보고 신청하기"
                                                        }
                                        },
