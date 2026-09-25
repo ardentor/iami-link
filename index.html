@@ -419,6 +419,29 @@ function subText(it){
   return (new Date() <= end) ? (it.sub || '') : it.subAfter;
 }
 
+/* 🔴 팝업 영상도 기간이 지나면 저절로 바뀐다 (2026-09-25 대표님 지시 —
+   「기념가는 이어가지 않고 9월31일날 수정하자 자동으로」).
+   여성 골격 영상의 끝 화면에 「9월 30일까지 1년 490,000원」이 박혀 있다. 카드 글만 subAfter 로
+   갈아타고 영상이 그대로면 10월 1일부터 **글과 영상이 서로 다른 값을 말한다.**
+   `preview.until` 이 있으면 그 시각까지는 지금 영상, 지나면 `preview.after` 의 video·videoSm·poster 를 쓴다.
+   🔴 after 에 videoSm·poster 가 없으면 **옛 것으로 돌아가지 않고 비운다** — 폰에만 옛 값이 남는 길을 막는다.
+   🔴 날짜가 이상하거나 after.video 가 없으면 지금 영상 그대로 둔다(아무것도 안 나오는 것보다 낫다).
+   📌 시각은 subUntil 과 같이 +09:00 을 붙여 적는다 — 접속자 시간대와 무관하게 한국시각 기준이다. */
+function pvOf(it){
+  var pv = (it && it.preview && it.preview.video) ? it.preview : null;
+  if(!pv || !pv.until || !pv.after || !pv.after.video) return pv;
+  var end = new Date(pv.until);
+  if(isNaN(end.getTime()) || new Date() <= end) return pv;
+  var o = {}, k;
+  for(k in pv){ if(Object.prototype.hasOwnProperty.call(pv, k)) o[k] = pv[k]; }
+  o.video   = pv.after.video;
+  o.videoSm = pv.after.videoSm || '';
+  o.poster  = pv.after.poster || '';
+  if(pv.after.note) o.note = pv.after.note;
+  if(pv.after.cta)  o.cta  = pv.after.cta;
+  return o;
+}
+
 /* 🔴 경계를 넘겨도 화면이 그대로면 값이 어긋난다 (2026-08-12 아거스 지적).
    페이지를 밤새 열어 두거나 폰에서 다시 꺼내 보실 때, 자정을 넘긴 순간 문구가 바뀌어야 한다.
    ① 1분마다 확인 ② 화면으로 돌아올 때 확인 — **문구가 실제로 달라졌을 때만** 다시 그린다.
@@ -426,7 +449,8 @@ function subText(it){
 function watchSubSwitch(sections){
   var snap = function(){
     return (sections || []).map(function(s){
-      return (s.items || []).map(subText).join('|');
+      /* 영상도 함께 본다 (2026-09-25) — 글은 그대로인데 영상만 바뀌는 카드가 있을 수 있다 */
+      return (s.items || []).map(function(it){ var p = pvOf(it); return subText(it) + '#' + (p ? p.video : ''); }).join('|');
     }).join('||');
   };
   var last = snap();
@@ -441,7 +465,7 @@ function watchSubSwitch(sections){
 function itemHTML(it){
   if(!it || !it.url) return '';                 // url 이 비면 아예 안 그린다 (죽은 링크 방지)
   var accent = /^[a-z]+$/.test(it.accent || '') ? it.accent : '';
-  var pv = (it.preview && it.preview.video) ? it.preview : null;
+  var pv = pvOf(it);                            // 기간이 지난 영상은 after 로 갈아 끼운 것 (2026-09-25)
   return '<a class="item' + (pv ? ' has-vid' : '') + '" href="' + esc(it.url) + '"' +
            (pv ? ' data-vid="' + esc(pv.video) + '"' +
                  /* 🔴 폰용 가벼운 판이 있으면 함께 싣는다 (2026-09-25 · 아래 pickVid 참고).
