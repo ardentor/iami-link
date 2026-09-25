@@ -444,6 +444,9 @@ function itemHTML(it){
   var pv = (it.preview && it.preview.video) ? it.preview : null;
   return '<a class="item' + (pv ? ' has-vid' : '') + '" href="' + esc(it.url) + '"' +
            (pv ? ' data-vid="' + esc(pv.video) + '"' +
+                 /* 🔴 폰용 가벼운 판이 있으면 함께 싣는다 (2026-09-25 · 아래 pickVid 참고).
+                    없으면 지금까지처럼 원본 하나로 돈다 — 옛 카드가 깨지지 않는다. */
+                 (pv.videoSm ? ' data-vid-sm="' + esc(pv.videoSm) + '"' : '') +
                  ' data-poster="' + esc(pv.poster || '') + '"' +
                  ' data-vnote="' + esc(pv.note || '') + '"' +
                  ' data-vcta="' + esc(pv.cta || '신청하러 가기') + '"'
@@ -465,6 +468,20 @@ function itemHTML(it){
     wrap.innerHTML = '';
     document.body.style.overflow = '';
   }
+  /* 🔴🔴 **폰이면 가벼운 판을 고른다** (2026-09-25 대표님 「그렇게해」)
+     원본은 4K(2160×3840 · 10MB)다. 팝업은 폭 **358px** 로 보여 주는 자리라
+     폰에서 4K 를 통째로 받는 것은 **기다림만 늘고 화면은 똑같다**
+     (실측 — 보이는 크기로 나란히 놓으니 눈으로 구분이 안 된다).
+     🔴 **원본을 지우거나 바꾸지 않는다** — 넓은 화면·전체화면에서는 원본이 그대로 간다.
+     🔴 **가벼운 판이 없으면 원본으로 간다** — 없는 주소를 부르면 아무것도 안 나온다. */
+  function pickVid(a){
+    var sm = a.dataset.vidSm;
+    if(!sm) return a.dataset.vid;
+    var 좁나 = (window.innerWidth || 0) <= 900;
+    var 손가락 = false;
+    try { 손가락 = window.matchMedia('(pointer:coarse)').matches; } catch(e){}
+    return (좁나 || 손가락) ? sm : a.dataset.vid;
+  }
   function open(a){
     if(!wrap){
       wrap = document.createElement('div');
@@ -475,7 +492,7 @@ function itemHTML(it){
     wrap.innerHTML =
       '<div class="vbox">' +
         '<button type="button" class="vclose">닫기 ✕</button>' +
-        '<video src="' + esc(a.dataset.vid) + '"' +
+        '<video src="' + esc(pickVid(a)) + '"' +
           (a.dataset.poster ? ' poster="' + esc(a.dataset.poster) + '"' : '') +
           ' controls playsinline muted preload="auto" autoplay></video>' +
         (a.dataset.vnote ? '<p class="vnote">' + esc(a.dataset.vnote) + '</p>' : '') +
