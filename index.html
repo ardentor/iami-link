@@ -484,6 +484,17 @@ function renderProfile(p){
    허브 문구만 손으로 두면 9월 1일에 「390,000원」이라고 광고하고 신청 화면에선 490,000원이 뜬다.
    🔴 광고한 값보다 비싸게 나오는 것이 가장 나쁜 어긋남이다 (허브 메모의 종전 사고와 같은 이유).
    ⚠️ 폰 시계가 틀리면 손님 화면도 틀린다 — 값은 어차피 신청 페이지가 최종이라 표시만 어긋난다. */
+/* 기한이 지나면 카드가 저절로 빠진다 (2026-10-25 대표님 「미리 수험생칸을 따로 안내해뒀다가 오픈할수있도록」).
+   `showUntil` 이 있으면 그 시각까지만 그린다 — 행사 카드를 미리 걸어 두고 끝나는 날 내리러 갈 일이 없게.
+   🔴 날짜가 이상하면 **보인다** 쪽으로 둔다(카드가 조용히 사라지는 것보다 낫다 · 눈에 띄면 고친다).
+   📌 시각은 subUntil 과 같이 +09:00 을 붙여 적는다 — 접속자 시간대와 무관하게 한국시각 기준이다. */
+function shownNow(it){
+  if(!it || !it.showUntil) return true;
+  var end = new Date(it.showUntil);
+  if(isNaN(end.getTime())) return true;
+  return new Date() <= end;
+}
+
 function subText(it){
   if(!it.subUntil || !it.subAfter) return it.sub || '';
   var end = new Date(it.subUntil);              // 예: "2026-08-31T23:59:59+09:00"
@@ -522,7 +533,8 @@ function watchSubSwitch(sections){
   var snap = function(){
     return (sections || []).map(function(s){
       /* 영상도 함께 본다 (2026-09-25) — 글은 그대로인데 영상만 바뀌는 카드가 있을 수 있다 */
-      return (s.items || []).map(function(it){ var p = pvOf(it); return subText(it) + '#' + (p ? p.video : ''); }).join('|');
+      /* 보이는지도 함께 본다 (2026-10-25) — showUntil 을 넘긴 카드가 화면에 남지 않게 */
+      return (s.items || []).map(function(it){ var p = pvOf(it); return (shownNow(it) ? '' : '×') + subText(it) + '#' + (p ? p.video : ''); }).join('|');
     }).join('||');
   };
   var last = snap();
@@ -536,6 +548,7 @@ function watchSubSwitch(sections){
 
 function itemHTML(it){
   if(!it || !it.url) return '';                 // url 이 비면 아예 안 그린다 (죽은 링크 방지)
+  if(!shownNow(it)) return '';                  // showUntil 이 지난 행사 카드는 안 그린다 (2026-10-25)
   var accent = /^[a-z]+$/.test(it.accent || '') ? it.accent : '';
   var pv = pvOf(it);                            // 기간이 지난 영상은 after 로 갈아 끼운 것 (2026-09-25)
   return '<a class="item' + (pv ? ' has-vid' : '') + '" href="' + esc(it.url) + '"' +
