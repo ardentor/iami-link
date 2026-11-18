@@ -11,6 +11,16 @@
             ],
     "sales":  [
                   {
+                      "round":  "bw1118",
+                      "title":  "IAMI BLACK WEEK",
+                      "sub":  "교구 PPT · 후자료 · 자료 구독 · 원데이클래스 · 날마다 오늘의 특별가",
+                      "start":  "2026-11-18T12:00",
+                      "end":  "2026-11-24T23:59",
+                      "url":  "https://iamibranding.com/blackfriday/",
+                      "public":  true,
+                      "popup":  true
+                  },
+                  {
                       "round":  "10월 13일 하루",
                       "title":  "퍼스널컬러 미니배너 POP",
                       "sub":  "남녀 16종 세트 144,000원 (택배비 포함) · 선착순 4세트",
